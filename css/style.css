@@ -206,3 +206,175 @@ hr{
   border: none;
   cursor: pointer;
 }
+
+.hero {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 40px 0;
+  background-color: transparent;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 40%;
+  transition: opacity .6s ease;
+  border-radius: 20px;
+  background-color: rgba(32, 32, 32, 0.5);
+}
+
+.hero-image.loaded {
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  max-height: 457px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  margin-left: 40px;
+  margin-top: 50px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  margin-left: 40px;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  max-width: 1120px;
+  margin-top: 130px;
+  margin-bottom: 40px;
+}
+
+.category,
+.more {
+  padding: 12px 22px;
+  border-radius: 32px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .3s ease;
+  user-select: none;
+}
+
+.category {
+  background: #fff;
+  color: #2e7d32;
+}
+
+.category:hover {
+  background: #2e7d32;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.more {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.more:hover {
+  background: #fff;
+  color: #2e7d32;
+  transform: scale(1.08);
+}
+
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 480px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hero {
+    border-radius: 16px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: 60px 0;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .categories {
+    gap: 10px;
+  }
+
+  .category,
+  .more {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 8% auto;
+  padding: 20px;
+  width: 70%;
+  border-radius: 8px;
+  animation: fadeIn 0.4s ease;
+}
+
+#closeCategories {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
