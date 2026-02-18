@@ -293,3 +293,112 @@ updateSlider();
 
 // Resize handler
 window.addEventListener('resize', updateProgressBar);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const image = document.getElementById("galleryImage");
+  const prevBtn = document.getElementById("prevPhoto");
+  const nextBtn = document.getElementById("nextPhoto");
+  const currentIndexEl = document.getElementById("currentIndex");
+  const totalPhotosEl = document.getElementById("totalPhotos");
+
+  const photos = [
+    { 
+      src: "img/galery/photo@1x.png",
+      srcset: "img/galery/photo@1x.png 1x, img/galery/photo@2x.png 2x"
+    },
+    { 
+      src: "img/galery/photo@1x.png",
+      srcset: "img/galery/photo@1x.png 1x, img/galery/photo@2x.png 2x"
+    },
+    { 
+      src: "img/galery/photo@1x.png",
+      srcset: "img/galery/photo@1x.png 1x, img/galery/photo@2x.png 2x"
+    }
+  ];
+
+  let index = 0;
+
+  totalPhotosEl.textContent = photos.length.toString().padStart(2, "0");
+
+  function updateGallery() {
+    image.src = photos[index].src;
+    image.srcset = photos[index].srcset;
+
+    currentIndexEl.textContent = (index + 1)
+      .toString()
+      .padStart(2, "0");
+  }
+
+  nextBtn.onclick = () => {
+    index = (index + 1) % photos.length;
+    updateGallery();
+  };
+
+  prevBtn.onclick = () => {
+    index = (index - 1 + photos.length) % photos.length;
+    updateGallery();
+  };
+
+});
+
+
+const content = document.getElementById('aboutContent');
+  const toggle = document.getElementById('aboutToggle');
+  const arrow = toggle.querySelector('.arrow');
+
+  toggle.addEventListener('click', () => {
+    content.classList.toggle('collapsed');
+
+    if (content.classList.contains('collapsed')) {
+      toggle.childNodes[0].textContent = 'Читать полностью ';
+      arrow.style.transform = 'rotate(0deg)';
+    } else {
+      toggle.childNodes[0].textContent = 'Скрыть ';
+      arrow.style.transform = 'rotate(180deg)';
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const cardsContainer = document.querySelector(".cards");
+  const rightArrow = document.querySelector(".arrow.right");
+
+  let index = 0;
+  const cardWidth = 270; // lățimea cardului + margin
+  const visibleCards = 3; // câte carduri se văd simultan
+  const totalCards = cardsContainer.children.length;
+
+  function updateSlider() {
+    const offset = -index * cardWidth;
+    cardsContainer.style.transform = `translateX(${offset}px)`;
+  }
+
+  rightArrow.addEventListener("click", () => {
+    index++;
+    if (index > totalCards - visibleCards) {
+      // dacă am ajuns la capăt, revin la început
+      index = 0;
+    }
+    updateSlider();
+  });
+
+  // Hover pe card → se mărește
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      card.style.transform = "scale(1.1)";
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "scale(1)";
+    });
+  });
+
+  // Hover pe "Показать все" → se mărește
+  const showAll = document.querySelector(".show-all");
+  showAll.addEventListener("mouseenter", () => {
+    showAll.style.transform = "scale(1.2)";
+  });
+  showAll.addEventListener("mouseleave", () => {
+    showAll.style.transform = "scale(1)";
+  });
+});
