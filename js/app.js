@@ -16,38 +16,59 @@ window.onclick = (e) => {
   }
 };
 
-document.querySelectorAll(".category").forEach(item => {
+// Категории — переход на страницу каталога
+document.querySelectorAll(".category[data-category]").forEach(item => {
   item.addEventListener("click", () => {
-    const categoryName = item.textContent.trim();
-    window.location.href = `/catalog?category=${encodeURIComponent(categoryName)}`;
+    const categoryName = item.dataset.category || item.textContent.trim();
+    window.location.href = `catalog.html?category=${encodeURIComponent(categoryName)}`;
   });
 });
 
-// Modal pentru "Еще"
+// Кнопка "Ещё..." — открывает модальное окно со всеми категориями
+const moreCategoriesBtn = document.getElementById("moreCategoriesBtn");
+const allCatsModal = document.getElementById("allCatsModal");
+const allCatsClose = document.getElementById("allCatsClose");
+
+if (moreCategoriesBtn && allCatsModal) {
+  moreCategoriesBtn.addEventListener("click", () => {
+    allCatsModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+
+  allCatsClose.addEventListener("click", () => {
+    allCatsModal.classList.remove("open");
+    document.body.style.overflow = "";
+  });
+
+  allCatsModal.addEventListener("click", (e) => {
+    if (e.target === allCatsModal) {
+      allCatsModal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Клик на категорию внутри модального окна
+  document.querySelectorAll(".all-cats-list li").forEach(li => {
+    li.addEventListener("click", () => {
+      const cat = li.dataset.category || li.textContent.trim();
+      window.location.href = `catalog.html?category=${encodeURIComponent(cat)}`;
+    });
+  });
+}
+
+// Старый modal categorii (fallback)
 const categoriesModal = document.getElementById("categoriesModal");
 const closeCategories = document.getElementById("closeCategories");
-const moreBtn = document.querySelector(".more");
-const allCategoriesList = document.getElementById("allCategories");
-
-moreBtn.addEventListener("click", () => {
-  allCategoriesList.innerHTML = "";
-  document.querySelectorAll(".category").forEach(el => {
-    const li = document.createElement("li");
-    li.textContent = el.textContent;
-    allCategoriesList.appendChild(li);
+if (closeCategories) {
+  closeCategories.addEventListener("click", () => {
+    if (categoriesModal) categoriesModal.style.display = "none";
   });
-  categoriesModal.style.display = "block";
-});
-
-closeCategories.addEventListener("click", () => {
-  categoriesModal.style.display = "none";
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target === categoriesModal) {
-    categoriesModal.style.display = "none";
-  }
-});
+  window.addEventListener("click", (e) => {
+    if (e.target === categoriesModal) {
+      categoriesModal.style.display = "none";
+    }
+  });
+}
 
 // =============================
 // Fade-in imagine hero
@@ -67,26 +88,47 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Click pe card
+// =============================================
+// КАРТОЧКИ ЭКСКУРСИЙ — клик на карточку или "Забронировать"
+// =============================================
+
+// Нормализуем data-link: убираем ведущий слеш если есть, добавляем .html
+function resolveExcursionLink(rawLink) {
+  if (!rawLink) return "excursion.html";
+  // Если уже выглядит как файл — вернуть как есть
+  if (rawLink.includes(".html")) return rawLink;
+  // /excursion/1 → excursion.html?id=1
+  const match = rawLink.match(/\/excursion\/(\d+)/);
+  if (match) return `excursion.html?id=${match[1]}`;
+  return "excursion.html";
+}
+
 document.querySelectorAll(".excursion-card").forEach(card => {
-  card.addEventListener("click", () => {
-    window.location.href = card.dataset.link;
+  card.style.cursor = "pointer";
+  card.addEventListener("click", (e) => {
+    // Не срабатывает если кликнули на кнопку (она сама обработает)
+    if (e.target.classList.contains("book-btn")) return;
+    window.location.href = resolveExcursionLink(card.dataset.link);
   });
 });
 
-// Click pe buton rezervare
 document.querySelectorAll(".book-btn").forEach(btn => {
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     const card = btn.closest(".excursion-card");
-    window.location.href = card.dataset.link;
+    window.location.href = resolveExcursionLink(card?.dataset.link);
   });
 });
 
-// Show more
-document.getElementById("showMore").addEventListener("click", () => {
-  window.location.href = "/catalog";
-});
+// =============================================
+// "Показать еще" → каталог
+// =============================================
+const showMoreBtn = document.getElementById("showMore");
+if (showMoreBtn) {
+  showMoreBtn.addEventListener("click", () => {
+    window.location.href = "catalog.html";
+  });
+}
 
 
 const months = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
@@ -132,6 +174,16 @@ function renderCalendar() {
   }
 }
 
+// Данные экскурсий для расписания
+const excursionData = [
+  { id: 1, title: "Экскурсия в Йошкар-Олу на автобусе из Казани", type: "Автобусная", duration: "10 часов", price: 2900 },
+  { id: 2, title: "Экскурсия в Болгар из Казани", type: "Автобусная", duration: "11 часов", price: 3000 },
+  { id: 3, title: "Автобусная экскурсия в Елабугу", type: "Автобусная", duration: "11 часов", price: 3300 },
+  { id: 4, title: "Обзорная экскурсия по Казани с посещением Кремля", type: "Автобусная", duration: "4 часа", price: 1100 },
+  { id: 5, title: "Экскурсия «Ночная Казань с колесом обозрения»", type: "Автобусная", duration: "2,5 часа", price: 1400 },
+  { id: 6, title: "Экскурсия в Свияжск и Храм всех религий", type: "Автобусная", duration: "6 часов", price: 2400 },
+];
+
 function renderSchedule(){
   const day = currentDate.getDate().toString().padStart(2,"0");
   const month = (currentDate.getMonth()+1).toString().padStart(2,"0");
@@ -141,25 +193,25 @@ function renderSchedule(){
 
   scheduleList.innerHTML = "";
 
-  for(let i = 0; i < 9; i++) {
+  excursionData.forEach((exc, i) => {
+    const hour = (9 + i).toString().padStart(2, "0");
 
-  const hour = (9 + i).toString().padStart(2, "0");
+    const item = document.createElement("div");
+    item.className = "schedule-item";
+    item.style.cursor = "pointer";
+    item.onclick = () => window.location.href = `excursion.html?id=${exc.id}`;
 
-  const item = document.createElement("div");
-  item.className = "schedule-item";
-  item.onclick = () => window.location.href = "/excursion.html";
+    item.innerHTML = `
+      <div class="time">${hour}:00</div>
+      <div class="schedule-item-info">
+        <div class="schedule-title">${exc.title}</div>
+        <div class="schedule-meta">${exc.type}, ${exc.duration}</div>
+      </div>
+      <div class="price">от ${exc.price} ₽ <span class="schedule-arrow">→</span></div>
+    `;
 
-  item.innerHTML = `
-    <div class="time">${hour}:00</div>
-    <div>
-      <div class="schedule-title">Экскурсия пример ${i+1}</div>
-      <div style="color:#888;font-size:16px">Автобусная, 4 часа</div>
-    </div>
-    <div class="price">от ${2000 + i * 300} ₽ →</div>
-  `;
-
-  scheduleList.appendChild(item);
-}
+    scheduleList.appendChild(item);
+  });
 }
 
 monthEl.onclick = ()=>{
@@ -201,7 +253,7 @@ document.getElementById("nextDay").onclick=()=>{
 };
 
 document.getElementById("fullSchedule").onclick=()=>{
-  window.location.href="/schedule.html";
+  window.location.href="schedule.html";
 };
 
 renderCalendar();
@@ -401,4 +453,308 @@ const content = document.getElementById('aboutContent');
   showAll.addEventListener("mouseleave", () => {
     showAll.style.transform = "scale(1)";
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const slider = document.getElementById("gallerySlider");
+  const prevBtn = document.getElementById("galleryPrev");
+  const nextBtn = document.getElementById("galleryNext");
+
+  const cards = slider.querySelectorAll(".card");
+  const gap = 20;
+
+  let index = 0;
+  const visibleCards = 4;
+
+  function updateSlider() {
+    const cardWidth = cards[0].offsetWidth + gap;
+    slider.style.transform = `translateX(-${index * cardWidth}px)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (index < cards.length - visibleCards) {
+      index++;
+      updateSlider();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
+      updateSlider();
+    }
+  });
+
+});
+
+
+document.querySelectorAll(".faq-question").forEach(question => {
+  question.addEventListener("click", () => {
+    const item = question.parentElement;
+    const isActive = item.classList.contains("active");
+
+    // Закрываем все
+    document.querySelectorAll(".faq-item").forEach(el => {
+      el.classList.remove("active");
+      const ans = el.querySelector(".faq-answer");
+      if (ans) ans.style.maxHeight = null;
+    });
+
+    // Открываем кликнутый (если не был открыт)
+    if (!isActive) {
+      item.classList.add("active");
+      const ans = item.querySelector(".faq-answer");
+      if (ans) ans.style.maxHeight = ans.scrollHeight + "px";
+    }
+  });
+});
+
+
+const socialButtons = document.querySelectorAll(".social-btn");
+const hiddenInput = document.getElementById("selectedSocial");
+
+socialButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    socialButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    hiddenInput.value = btn.dataset.social;
+  });
+});
+
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  console.log("Имя:", formData.get("name"));
+  console.log("Телефон:", formData.get("phone"));
+  console.log("Вопрос:", formData.get("question"));
+  console.log("Соцсеть:", formData.get("social"));
+
+  alert("Заявка отправлена! Способ связи: " + formData.get("social"));
+
+  this.reset();
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===============================
+     CALL MODAL
+  =============================== */
+
+  const callBtn = document.getElementById("callBtn");
+  const callModal = document.getElementById("modal");
+  const closeModal = document.getElementById("closeModal");
+
+  if (callBtn && callModal) {
+    callBtn.onclick = () => callModal.style.display = "flex";
+    closeModal.onclick = () => callModal.style.display = "none";
+
+    window.addEventListener("click", (e) => {
+      if (e.target === callModal) callModal.style.display = "none";
+    });
+  }
+
+
+  document.querySelectorAll(".category").forEach(item => {
+    item.addEventListener("click", () => {
+      const categoryName = item.textContent.trim();
+      window.location.href = `/catalog?category=${encodeURIComponent(categoryName)}`;
+    });
+  });
+
+
+  const topicsModal = document.getElementById("topicsModal");
+  const moreBtn = document.querySelector(".more-btn");
+  const closeTopics = document.getElementById("closeTopics");
+
+  if (moreBtn && topicsModal) {
+    moreBtn.addEventListener("click", () => {
+      topicsModal.style.display = "flex";
+    });
+
+    closeTopics.addEventListener("click", () => {
+      topicsModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === topicsModal) {
+        topicsModal.style.display = "none";
+      }
+    });
+  }
+
+
+  // FAQ handled globally above
+
+
+  const socialButtons = document.querySelectorAll(".social-btn");
+  const hiddenInput = document.getElementById("selectedSocial");
+
+  if (socialButtons.length && hiddenInput) {
+    socialButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        socialButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        hiddenInput.value = btn.dataset.social;
+      });
+    });
+  }
+
+  const contactForm = document.getElementById("contactForm");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      console.log("Имя:", formData.get("name"));
+      console.log("Телефон:", formData.get("phone"));
+      console.log("Вопрос:", formData.get("question"));
+      console.log("Соцсеть:", formData.get("social"));
+
+      alert("Заявка отправлена через: " + formData.get("social"));
+
+      this.reset();
+    });
+  }
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* Адрес → Яндекс карты */
+  const address = document.getElementById("footerAddress");
+  address.addEventListener("click", () => {
+    window.open("https://yandex.ru/maps/?text=Казань+Баумана+26", "_blank");
+  });
+
+  /* Заказать звонок */
+  const footerCallBtn = document.getElementById("footerCallBtn");
+  const callModal = document.getElementById("modal");
+
+  footerCallBtn.addEventListener("click", () => {
+    callModal.style.display = "flex";
+  });
+
+  /* Кнопка вверх */
+  const scrollTopBtn = document.getElementById("scrollTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      scrollTopBtn.style.display = "flex";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+});
+
+// =============================================
+// MOBILE HEADER: Phone Modal, Burger Menu, Sticky
+// =============================================
+(function() {
+
+  // -- Phone modal --
+  const mobPhoneBtn = document.getElementById('mobPhoneBtn');
+  const mobPhoneModal = document.getElementById('mobPhoneModal');
+  const mobPhoneModalClose = document.getElementById('mobPhoneModalClose');
+
+  if (mobPhoneBtn && mobPhoneModal) {
+    mobPhoneBtn.addEventListener('click', () => {
+      mobPhoneModal.classList.add('open');
+    });
+
+    mobPhoneModalClose.addEventListener('click', () => {
+      mobPhoneModal.classList.remove('open');
+    });
+
+    mobPhoneModal.addEventListener('click', (e) => {
+      if (e.target === mobPhoneModal) mobPhoneModal.classList.remove('open');
+    });
+  }
+
+  // -- Burger / Drawer menu --
+  const mobBurger = document.getElementById('mobBurger');
+  const mobMenuDrawer = document.getElementById('mobMenuDrawer');
+  const mobMenuOverlay = document.getElementById('mobMenuOverlay');
+  const mobMenuClose = document.getElementById('mobMenuClose');
+  const mobMenuCallBtn = document.getElementById('mobMenuCallBtn');
+
+  function openDrawer() {
+    mobMenuDrawer.classList.add('open');
+    mobMenuOverlay.classList.add('open');
+    mobBurger.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    mobMenuDrawer.classList.remove('open');
+    mobMenuOverlay.classList.remove('open');
+    mobBurger.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (mobBurger) {
+    mobBurger.addEventListener('click', () => {
+      if (mobMenuDrawer.classList.contains('open')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+  }
+
+  if (mobMenuClose) mobMenuClose.addEventListener('click', closeDrawer);
+  if (mobMenuOverlay) mobMenuOverlay.addEventListener('click', closeDrawer);
+
+  // "Заказать звонок" in mobile menu opens the main call modal
+  if (mobMenuCallBtn) {
+    mobMenuCallBtn.addEventListener('click', () => {
+      closeDrawer();
+      const callModal = document.getElementById('modal');
+      if (callModal) callModal.style.display = 'flex';
+    });
+  }
+
+  // -- Mobile header stays fixed on scroll (already handled by position:fixed in CSS) --
+  // No extra JS needed; CSS position:fixed handles it.
+
+})();
+
+// =============================================
+// "Читать еще" — разворачивает текст отзыва на мобиле
+// =============================================
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll('.review-card p').forEach(p => {
+      // Добавляем класс truncated для обрезки
+      p.classList.add('truncated');
+
+      // Кнопка "Читать еще"
+      const btn = document.createElement('button');
+      btn.className = 'read-more-btn';
+      btn.textContent = 'Читать еще';
+      p.after(btn);
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        p.classList.remove('truncated');
+        btn.remove();
+      });
+    });
+  }
 });
