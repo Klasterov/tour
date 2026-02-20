@@ -17,9 +17,92 @@ const allTags = [
     "Экскурсия в Свияжск"
   ];
 
+  window.openYandex = function() {
+    window.open('https://yandex.ru/maps', '_blank');
+  };
+
+  (function resetBodyOverflowOnLoad() {
+    const hasOpenModal = document.querySelector('.overlay.open, #photoModal.open, #allCategoriesModal.open');
+    if (!hasOpenModal) document.body.style.overflow = '';
+  })();
+
+  (function initMobileNavigation() {
+    const mobPhoneBtn = document.getElementById('mobPhoneBtn');
+    const mobPhoneModal = document.getElementById('mobPhoneModal');
+    const mobPhoneModalClose = document.getElementById('mobPhoneModalClose');
+
+    const mobBurger = document.getElementById('mobBurger');
+    const mobMenuDrawer = document.getElementById('mobMenuDrawer');
+    const mobMenuOverlay = document.getElementById('mobMenuOverlay');
+    const mobMenuClose = document.getElementById('mobMenuClose');
+    const mobMenuCallBtn = document.getElementById('mobMenuCallBtn');
+
+    if (!mobBurger || !mobMenuDrawer || !mobMenuOverlay || !mobMenuClose) return;
+
+    function openDrawer() {
+      mobMenuDrawer.classList.add('open');
+      mobMenuOverlay.classList.add('open');
+      mobBurger.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      mobMenuDrawer.classList.remove('open');
+      mobMenuOverlay.classList.remove('open');
+      mobBurger.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function openPhoneModal() {
+      if (!mobPhoneModal) return;
+      mobPhoneModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePhoneModal() {
+      if (!mobPhoneModal) return;
+      mobPhoneModal.classList.remove('open');
+      if (!mobMenuDrawer.classList.contains('open')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    mobBurger.addEventListener('click', () => {
+      if (mobMenuDrawer.classList.contains('open')) closeDrawer();
+      else openDrawer();
+    });
+    mobMenuClose.addEventListener('click', closeDrawer);
+    mobMenuOverlay.addEventListener('click', closeDrawer);
+
+    mobMenuDrawer.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    if (mobPhoneBtn) mobPhoneBtn.addEventListener('click', openPhoneModal);
+    if (mobPhoneModalClose) mobPhoneModalClose.addEventListener('click', closePhoneModal);
+    if (mobPhoneModal) {
+      mobPhoneModal.addEventListener('click', (e) => {
+        if (e.target === mobPhoneModal) closePhoneModal();
+      });
+    }
+    if (mobMenuCallBtn) {
+      mobMenuCallBtn.addEventListener('click', () => {
+        closeDrawer();
+        openPhoneModal();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      closeDrawer();
+      closePhoneModal();
+    });
+  })();
+
   const VISIBLE_COUNT = 11;
   let expanded = false;
 
+  try {
   const wrapper = document.getElementById('tagsWrapper');
 
   function render() {
@@ -49,6 +132,58 @@ const allTags = [
 
   render();
 
+  // Categories UX: horizontal scrolling + navigate to catalog + full list modal.
+  wrapper.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      wrapper.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  wrapper.addEventListener('click', (e) => {
+    const tag = e.target.closest('.tag');
+    if (!tag || tag.classList.contains('tag-more')) return;
+    const category = (tag.textContent || '').trim();
+    if (!category) return;
+    window.location.href = `catalog.html?category=${encodeURIComponent(category)}`;
+  });
+
+  const originalMore = wrapper.querySelector('.tag-more');
+  if (originalMore) {
+    const cleanMore = originalMore.cloneNode(true);
+    originalMore.replaceWith(cleanMore);
+    cleanMore.textContent = 'Еще...';
+    cleanMore.addEventListener('click', () => {
+      const modal = document.getElementById('allCategoriesModal');
+      if (!modal) return;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  const catsModal = document.getElementById('allCategoriesModal');
+  const catsList = document.getElementById('allCategoriesList');
+  const catsClose = document.getElementById('allCategoriesClose');
+  if (catsModal && catsList && catsClose) {
+    catsList.innerHTML = allTags.map((tag) => `<button type="button" class="cats-modal-item">${tag}</button>`).join('');
+    catsList.querySelectorAll('.cats-modal-item').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const category = (btn.textContent || '').trim();
+        window.location.href = `catalog.html?category=${encodeURIComponent(category)}`;
+      });
+    });
+    const closeCatsModal = () => {
+      catsModal.classList.remove('open');
+      catsModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    catsClose.addEventListener('click', closeCatsModal);
+    catsModal.addEventListener('click', (e) => {
+      if (e.target === catsModal) closeCatsModal();
+    });
+  }
+
   const PHOTOS = [
     {
       src:    "../img/excursion/1.png",
@@ -77,8 +212,27 @@ const allTags = [
 
   const mainImg   = document.getElementById('mainImg');
   const thumbsRow = document.getElementById('thumbsRow');
+  const photoModal = document.getElementById('photoModal');
+  const photoModalImg = document.getElementById('photoModalImg');
+  const photoModalClose = document.getElementById('photoModalClose');
 
   mainImg.style.transition = 'opacity 0.18s';
+
+  function openPhotoModal(src, alt) {
+    if (!photoModal || !photoModalImg) return;
+    photoModalImg.src = src;
+    photoModalImg.alt = alt || 'Фото экскурсии';
+    photoModal.classList.add('open');
+    photoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePhotoModal() {
+    if (!photoModal) return;
+    photoModal.classList.remove('open');
+    photoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
 
   function renderThumbs() {
     thumbsRow.innerHTML = '';
@@ -128,10 +282,18 @@ const allTags = [
 
   document.getElementById('prevBtn').addEventListener('click', () => goTo(cur - 1));
   document.getElementById('nextBtn').addEventListener('click', () => goTo(cur + 1));
+  mainImg.addEventListener('click', () => openPhotoModal(mainImg.currentSrc || mainImg.src, mainImg.alt));
+  if (photoModalClose) photoModalClose.addEventListener('click', closePhotoModal);
+  if (photoModal) {
+    photoModal.addEventListener('click', (e) => {
+      if (e.target === photoModal) closePhotoModal();
+    });
+  }
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft')  goTo(cur - 1);
     if (e.key === 'ArrowRight') goTo(cur + 1);
     if (e.key === 'Escape')     closeModal();
+    if (e.key === 'Escape')     closePhotoModal();
   });
 
   renderThumbs();
@@ -142,6 +304,13 @@ const allTags = [
     btn.addEventListener('click', () => {
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.querySelectorAll('.btn-green[href*="wa.me"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const waUrl = btn.getAttribute('href');
+      if (waUrl) window.open(waUrl, '_blank', 'noopener');
     });
   });
 
@@ -157,10 +326,20 @@ const allTags = [
     alert('Заявка принята! Мы свяжемся с вами в ближайшее время.');
     closeModal();
   }
+  } catch (_e) {}
+
+  window.doSubmit = function() {
+    alert('Заявка принята! Мы свяжемся с вами в ближайшее время.');
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  };
 
 (function() {
   const tabs = document.querySelectorAll('.exc-tab');
-  const sections = ['sec-route','sec-about','sec-info','sec-departure','sec-similar','sec-reviews'];
+  const sections = ['sec-route','sec-about','sec-info','sec-departure','sec-similar','sec-reviews','excTourReviews'];
 
   tabs.forEach(tab => {
     tab.addEventListener('click', function(e) {
@@ -178,17 +357,67 @@ const allTags = [
       const el = document.getElementById(id);
       if (el && window.scrollY >= el.offsetTop - 80) cur = id;
     });
-    tabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-target') === cur));
+    const activeTarget = cur === 'sec-reviews' ? 'excTourReviews' : cur;
+    tabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-target') === activeTarget));
   }, { passive: true });
 })();
 
 (function() {
+  const topicItems = document.querySelectorAll('.topic-item[data-category]');
+  topicItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      const category = (item.getAttribute('data-category') || item.textContent || '').trim();
+      if (!category) return;
+      window.location.href = `catalog.html?category=${encodeURIComponent(category)}`;
+    });
+  });
+
+  document.querySelectorAll('.topic-item.more-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const modal = document.getElementById('allCategoriesModal');
+      if (!modal) return;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+})();
+
+(function() {
+  // Move "included / not included" block under reviews on mobile.
+  const infoBlock = document.querySelector('.exc-main-right .info-block');
+  const tabsOuter = document.querySelector('.exc-tabs-outer');
+  const rightCol = document.querySelector('.exc-main-right');
+  if (!infoBlock || !tabsOuter || !rightCol) return;
+
+  const marker = document.createElement('div');
+  marker.style.display = 'none';
+  rightCol.appendChild(marker);
+
+  function placeByViewport() {
+    if (window.innerWidth <= 900) {
+      if (!infoBlock.classList.contains('mobile-under-reviews')) {
+        tabsOuter.insertAdjacentElement('beforebegin', infoBlock);
+        infoBlock.classList.add('mobile-under-reviews');
+      }
+    } else if (infoBlock.classList.contains('mobile-under-reviews')) {
+      marker.insertAdjacentElement('beforebegin', infoBlock);
+      infoBlock.classList.remove('mobile-under-reviews');
+    }
+  }
+
+  placeByViewport();
+  window.addEventListener('resize', placeByViewport);
+})();
+
+(function() {
   const toggle = document.getElementById('aboutToggle');
-  const extra  = document.getElementById('aboutExtra');
+  const content = document.getElementById('aboutContent');
   const label  = document.getElementById('aboutToggleText');
-  if (!toggle) return;
+  if (!toggle || !content || !label) return;
   toggle.addEventListener('click', function() {
-    const open = extra.classList.toggle('open');
+    const open = content.classList.toggle('open');
+    content.classList.toggle('collapsed', !open);
     label.textContent = open ? 'Скрыть' : 'Читать полностью';
     toggle.classList.toggle('open', open);
   });
@@ -198,14 +427,297 @@ const allTags = [
   const track = document.getElementById('simTrack');
   const prev  = document.getElementById('simPrev');
   const next  = document.getElementById('simNext');
-  if (!track) return;
-  const STEP = 220 + 16;
+  const prevMob = document.querySelector('.sim-prev-mob');
+  const nextMob = document.querySelector('.sim-next-mob');
+  const mobileProgress = document.getElementById('simMobileProgress');
+  const prevButtons = [prev, prevMob].filter(Boolean);
+  const nextButtons = [next, nextMob].filter(Boolean);
+  if (!track || !prev || !next) return;
+  const viewport = track.parentElement;
+  if (!viewport) return;
   let pos = 0;
+  const mobileMq = window.matchMedia('(max-width: 640px)');
+  function getStep() {
+    const first = track.querySelector('.excursion-card, .sim-card');
+    if (!first) return 0;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+    return first.getBoundingClientRect().width + gap;
+  }
+  function updateMobileButtons() {
+    if (!mobileMq.matches) return;
+    const max = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+    const atStart = viewport.scrollLeft <= 2;
+    const atEnd = viewport.scrollLeft >= max - 2;
+    prevButtons.forEach((btn) => { btn.disabled = atStart; });
+    nextButtons.forEach((btn) => { btn.disabled = atEnd; });
+
+    if (mobileProgress) {
+      const ratio = max > 0 ? viewport.scrollLeft / max : 0;
+      const trackEl = mobileProgress.parentElement;
+      const width = 32;
+      mobileProgress.style.width = `${width}px`;
+      if (trackEl) {
+        const left = ratio * Math.max(trackEl.clientWidth - width, 0);
+        mobileProgress.style.left = `${left}px`;
+      }
+    }
+  }
   function move(dir) {
-    const max = track.scrollWidth - track.parentElement.offsetWidth;
-    pos = Math.max(0, Math.min(pos + dir * STEP, max));
+    const step = getStep();
+    if (mobileMq.matches) {
+      viewport.scrollBy({ left: dir * step, behavior: 'smooth' });
+      return;
+    }
+    const max = track.scrollWidth - viewport.offsetWidth;
+    pos = Math.max(0, Math.min(pos + dir * step, max));
     track.style.transform = 'translateX(-' + pos + 'px)';
   }
-  prev.addEventListener('click', () => move(-1));
-  next.addEventListener('click', () => move(1));
+  prevButtons.forEach((btn) => btn.addEventListener('click', () => move(-1)));
+  nextButtons.forEach((btn) => btn.addEventListener('click', () => move(1)));
+  viewport.addEventListener('scroll', updateMobileButtons, { passive: true });
+  window.addEventListener('resize', () => {
+    if (mobileMq.matches) {
+      track.style.transform = '';
+      updateMobileButtons();
+      return;
+    }
+    const max = Math.max(0, track.scrollWidth - viewport.offsetWidth);
+    pos = Math.min(pos, max);
+    track.style.transform = 'translateX(-' + pos + 'px)';
+  });
+  if (mobileMq.matches) {
+    track.style.transform = '';
+    updateMobileButtons();
+  }
 })();
+
+(function() {
+  const slider = document.getElementById('slider');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const progressBar = document.getElementById('progress');
+  const progressTrack = document.querySelector('.progress-track');
+  if (!slider || !prevBtn || !nextBtn || !progressBar || !progressTrack) return;
+
+  const cards = Array.from(slider.querySelectorAll('.review-card'));
+  if (!cards.length) return;
+
+  let currentIndex = 0;
+  let isDragging = false;
+
+  function getGap() {
+    const style = window.getComputedStyle(slider);
+    return parseFloat(style.columnGap || style.gap || '16') || 16;
+  }
+
+  function getCardsPerView() {
+    const first = cards[0];
+    if (!first) return 1;
+    const cardWidth = first.getBoundingClientRect().width;
+    const containerWidth = slider.parentElement ? slider.parentElement.clientWidth : 0;
+    if (!cardWidth || !containerWidth) return 1;
+    return Math.max(1, Math.floor((containerWidth + getGap()) / (cardWidth + getGap())));
+  }
+
+  function getMaxIndex() {
+    return Math.max(cards.length - getCardsPerView(), 0);
+  }
+
+  function updateProgressBar() {
+    const maxScroll = Math.max(getMaxIndex(), 1);
+    const percentage = currentIndex / maxScroll;
+    const trackWidth = progressTrack.offsetWidth || 0;
+    const barWidth = Math.max(trackWidth * (getCardsPerView() / cards.length), 40);
+
+    progressBar.style.width = barWidth + 'px';
+    progressBar.style.left = (trackWidth - barWidth) * percentage + 'px';
+  }
+
+  function updateSlider() {
+    const first = cards[0];
+    if (!first) return;
+    const cardWidth = first.getBoundingClientRect().width;
+    const offset = -currentIndex * (cardWidth + getGap());
+    slider.style.transform = `translateX(${offset}px)`;
+
+    prevBtn.disabled = currentIndex <= 0;
+    nextBtn.disabled = currentIndex >= getMaxIndex();
+    updateProgressBar();
+  }
+
+  function navigate(direction) {
+    if (direction === 'prev' && currentIndex > 0) {
+      currentIndex -= 1;
+      updateSlider();
+    } else if (direction === 'next' && currentIndex < getMaxIndex()) {
+      currentIndex += 1;
+      updateSlider();
+    }
+  }
+
+  prevBtn.addEventListener('click', () => navigate('prev'));
+  nextBtn.addEventListener('click', () => navigate('next'));
+
+  progressTrack.addEventListener('mousedown', () => {
+    isDragging = true;
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const rect = progressTrack.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const maxScroll = Math.max(getMaxIndex(), 1);
+    const barWidth = progressBar.offsetWidth;
+    const maxX = Math.max(rect.width - barWidth, 1);
+    currentIndex = Math.round((x / maxX) * maxScroll);
+    currentIndex = Math.max(0, Math.min(currentIndex, getMaxIndex()));
+    updateSlider();
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  window.addEventListener('resize', () => {
+    currentIndex = Math.min(currentIndex, getMaxIndex());
+    updateSlider();
+  });
+
+  updateSlider();
+})();
+
+(function() {
+  const root = document.getElementById('excTourReviews');
+  if (!root) return;
+
+  const listEl = document.getElementById('tourReviewsList');
+  const paginationEl = document.getElementById('tourReviewsPagination');
+  const form = document.getElementById('tourReviewForm');
+  const nameInput = document.getElementById('tourReviewName');
+  const textInput = document.getElementById('tourReviewText');
+  const agreeInput = document.getElementById('tourReviewAgree');
+  const thanksModal = document.getElementById('tourThanksModal');
+  const thanksClose = document.getElementById('tourThanksClose');
+  if (!listEl || !paginationEl || !form || !nameInput || !textInput || !agreeInput || !thanksModal || !thanksClose) return;
+
+  const BASE_REVIEWS = [
+    { author: 'Zeee Zee', date: '01 декабря', text: 'Очень советую эту компанию, сотрудники очень вежливые и с юмором.' },
+    { author: 'Эдуард Насибулин', date: '24 октября', text: 'Экскурсия на высшем уровне гид отлично все рассказывает,без запинок По цене нариканий нету, цена сладкая Лично я с семьей ездили на экскурсию ,,огни ночной Казани,,которая проводится на автобусе, автобусы новые, удобные, чистые,никаких пятен на сиденьях Вообщем, всем советую обращаться в эту организацию!)' },
+    { author: 'Лейсан Гайсина', date: '16 октября', text: 'Была на экскурсии «Огни ночной Казани» все просто прекрасно, такой красивый город, все очень интересно и познавательно рассказали!' },
+    { author: 'Вера Гильфанова', date: '05 октября', text: 'Были на экскурсии очень сильно понравилось советую Ночная экскурсия шикарные виды, вообще' },
+    { author: 'Иван Петров', date: '28 сентября', text: 'Организация четкая, автобус комфортный, рекомендую.' },
+    { author: 'Мария Смирнова', date: '11 сентября', text: 'Маршрут отличный, увидели все ключевые точки.' },
+    { author: 'Александр Иванов', date: '30 августа', text: 'Гид профессионал, отвечал на все вопросы.' }
+  ];
+
+  const PAGE_SIZE = 4;
+  const FIXED_PAGE_COUNT = 6;
+  let reviews = [...BASE_REVIEWS];
+  let currentPage = 1;
+
+  function stars() {
+    return '&#9733;&#9733;&#9733;&#9733;&#9733;';
+  }
+
+  function renderList() {
+    const safePage = Math.max(1, Math.min(currentPage, FIXED_PAGE_COUNT));
+    const start = (safePage - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    const pageItems = reviews.slice(start, end);
+    listEl.innerHTML = pageItems.map(r => `
+      <article class="tour-reviews-item">
+        <div class="tour-reviews-meta">
+          <strong class="tour-reviews-author">${r.author}</strong>
+          <span class="tour-reviews-date">${r.date}</span>
+          <span class="tour-reviews-rating">${stars()}</span>
+        </div>
+        <p class="tour-reviews-text">${r.text}</p>
+      </article>
+    `).join('');
+  }
+
+  function renderPagination() {
+    currentPage = Math.max(1, Math.min(currentPage, FIXED_PAGE_COUNT));
+    paginationEl.innerHTML = '';
+    for (let i = 1; i <= FIXED_PAGE_COUNT; i++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tour-page-btn' + (i === currentPage ? ' active' : '');
+      btn.textContent = String(i);
+      btn.addEventListener('click', () => {
+        currentPage = i;
+        renderList();
+        renderPagination();
+      });
+      paginationEl.appendChild(btn);
+    }
+
+    const nextBtn = document.createElement('button');
+    nextBtn.type = 'button';
+    nextBtn.className = 'tour-page-btn tour-page-nav';
+    nextBtn.textContent = '›';
+    nextBtn.setAttribute('aria-label', 'Следующая страница');
+    if (currentPage >= FIXED_PAGE_COUNT) {
+      nextBtn.disabled = true;
+      nextBtn.style.opacity = '0.45';
+      nextBtn.style.cursor = 'default';
+    }
+    nextBtn.addEventListener('click', () => {
+      if (currentPage >= FIXED_PAGE_COUNT) return;
+      currentPage += 1;
+      renderList();
+      renderPagination();
+    });
+    paginationEl.appendChild(nextBtn);
+  }
+
+  function openThanks() {
+    thanksModal.classList.add('open');
+    thanksModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeThanks() {
+    thanksModal.classList.remove('open');
+    thanksModal.setAttribute('aria-hidden', 'true');
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!agreeInput.checked) return;
+
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    if (!name || !text) return;
+
+    const d = new Date();
+    const date = d.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long' });
+    reviews.unshift({ author: name, date, text });
+    currentPage = 1;
+
+    try {
+      localStorage.setItem('excursionReviews', JSON.stringify(reviews));
+    } catch (_e) {}
+
+    renderList();
+    renderPagination();
+    form.reset();
+    openThanks();
+  });
+
+  thanksClose.addEventListener('click', closeThanks);
+  thanksModal.addEventListener('click', function(e) {
+    if (e.target === thanksModal) closeThanks();
+  });
+
+  try {
+    const saved = JSON.parse(localStorage.getItem('excursionReviews') || 'null');
+    if (Array.isArray(saved) && saved.length) reviews = saved;
+  } catch (_e) {}
+
+  renderList();
+  renderPagination();
+})();
+
+
+

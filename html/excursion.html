@@ -283,20 +283,34 @@
         </div>
     </header>
 
-        <div class="filter-section">
+<div class="filter-section">
+  <div class="container">
   <div class="tags-wrapper" id="tagsWrapper">
+    </div>
+  </div>
+</div>
+
+<div class="cats-modal" id="allCategoriesModal" aria-hidden="true">
+  <div class="cats-modal-dialog">
+    <div class="cats-modal-head">
+      <h3>Все категории</h3>
+      <button type="button" id="allCategoriesClose" aria-label="Закрыть">×</button>
+    </div>
+    <div class="cats-modal-list" id="allCategoriesList"></div>
   </div>
 </div>
 
 <div class="breadcrumb">
+  <div class="container">
   <a href="#">Главная</a><span class="sep"> › </span>
   <a href="#">Экскурсии</a><span class="sep"> › </span>
   <a href="#">Групповые экскурсии в Казани</a><span class="sep"> › </span>
   Экскурсия по вечернему городу «Огни ночной Казани»
+  </div>
 </div>
 
 <div class="page">
-
+  <div class="container">
   <h1>Экскурсия по вечернему городу «Огни ночной Казани»</h1>
 
   <!-- RATING ROW -->
@@ -316,7 +330,7 @@
       <span class="rating-score">4.93</span>
       <a class="reviews-a" href="reviews.html">&nbsp;(33 отзыва)</a>
     </div>
-    <a href="route.pdf" download class="download-btn">
+    <a href="route.txt" download class="download-btn">
       Скачать маршрут
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
@@ -404,283 +418,9 @@
 
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════
-     TAB NAVIGATION
-══════════════════════════════════════════ -->
-<div class="exc-tabs-outer">
-  <div class="exc-tabs-wrap">
-    <nav class="exc-tabs" id="excTabs">
-      <a class="exc-tab active" data-target="sec-route" href="#sec-route">Маршрут</a>
-      <a class="exc-tab" data-target="sec-about" href="#sec-about">Об экскурсии</a>
-      <a class="exc-tab" data-target="sec-info" href="#sec-info">Важная информация</a>
-      <a class="exc-tab" data-target="sec-departure" href="#sec-departure">Место отправления</a>
-      <a class="exc-tab" data-target="sec-similar" href="#sec-similar">Похожие экскурсии</a>
-      <a class="exc-tab" data-target="sec-reviews" href="#sec-reviews">Отзывы</a>
-    </nav>
-  </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     МАРШРУТ
-══════════════════════════════════════════ -->
-<div class="exc-main-grid">
-  <div class="exc-main-left">
-    <div class="exc-page" id="sec-route">
-      <h2 class="exc-section-title">Маршрут</h2>
-      <div class="route-grid">
-        <div class="route-item route-special route-start" onclick="window.location.href='#'">
-          <div class="route-label">
-            <span class="route-special-icon">⚑</span>
-            <span class="route-label-text">Сбор группы</span>
-          </div>
-          <div class="route-name">Памятник дракону Зилянту, метро «Кремлёвская»</div>
-        </div>
-        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">1</div><div class="route-name">Площадь Свободы</div></div>
-        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">2</div><div class="route-name">Дворец земледельцев</div></div>
-        <div class="route-item route-break" onclick="window.location.href='#'"><div class="route-num">3</div><div class="route-name">Кремлёвская набережная</div></div>
-        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">4</div><div class="route-name">ЗАГС «Чаша» дворец бракосочетания</div></div>
-        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">5</div><div class="route-name">Стадион «Казань-Арена»</div></div>
-        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">6</div><div class="route-name">Парки и набережные Казани</div></div>
-        <div class="route-item route-break" onclick="window.location.href='#'"><div class="route-num">7</div><div class="route-name">Парк Горького</div></div>
-        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">8</div><div class="route-name">«Поющие фонтаны»</div></div>
-        <div class="route-item route-wide" onclick="window.location.href='#'"><div class="route-num">9</div><div class="route-name">Театр кукол «Экият»</div></div>
-        <div class="route-item route-special route-end route-break" onclick="window.location.href='#'">
-          <div class="route-label">
-            <span class="route-special-icon">⚑</span>
-            <span class="route-label-text">Конец экскурсии</span>
-          </div>
-          <div class="route-name">Памятник дракону Зилянту, метро «Кремлёвская»</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exc-page" id="sec-about">
-      
-      <div class="about-text-wrap">
-        <h2 class="exc-section-title">Об экскурсии «Огни ночной Казани»</h2>
-        <div class="about-text">
-          <p>С наступлением сумерек стихает дневная суета, и Казань превращается в загадочную восточную сказку. Ночные огни преображают облик города, он весь сияет и искрится. Фонари и подсветка зданий, светящиеся брызги пятен фонтанов — необыкновенное зрелище. Предлагаем посмотреть, как выглядит вечерняя Казань; экскурсия подарит настоящее наслаждение красотой столицы. О профессиональный гид расскажет о выдающихся исторических и современных достопримечательностях; «Хан Тур Казань» проводит ежедневные автобусные обзорные экскурсии по топовым местам ночной столицы.</p>
-          <p>Разместитесь в комфортабельном автобусе, вам остаётся только наслаждаться великолепными видами, слушая рассказ экскурсовода. Автобус делает остановки, чтобы туристы смогли фотографировать достопримечательности. Никакие слова не передадут красоту ночного города: это надо обязательно увидеть самим. Что вы увидите на вечерней экскурсии по Казани</p>
-          <div class="about-extra" id="aboutExtra">
-            <h3>Что вы увидите на вечерней экскурсии по Казани</h3>
-            <p>Столица Татарстана — один из ведущих туристических объектов России. Тысячелетняя история города подарила ему множество исторических зданий, памятных мест. Современная архитектура сделала облик города интереснейшим местом для экскурсий, развлечений и отдыха. Великолепная ночная Казань, экскурсия на автобусе имеет самый оптимальный маршрут, чтобы туристы смогли увидеть топовые локации столицы.</p>
-            <h3>Театр кукол «Экият»</h3>
-            <p>Настоящий сказочный дворец в стиле Диснея. Башенки, флюгера, цветные витражи, колонны. В ярких подсветке чудесный детский замок поражает воображение.</p>
-            <h3>Центральный дворец бракосочетания «Чаша»</h3>
-            <p>Чаша в форме традиционного казана — символ любви и домашнего очага. Здание на набережной отражается в воде реки Казанка, переливаясь красочными огнями. Дворец охраняют 4 культуры крылатых барсов и драконов, чтобы семейные узы были крепкими.</p>
-            <h3>Казанский Кремль</h3>
-            <p>Казанский Кремль великолепен днём, но его обязательно нужно посмотреть в ночных огнях. Огни прожекторов выхватывают из темноты башни Кремля, Благовещенский собор и мечеть Кул-Шариф, превращая их в сказочные силуэты. Старинная белокаменная Спасская башня, украшенная флагами, выглядит торжественно и нарядно.</p>
-          </div>
-        </div>
-        <button class="about-toggle" id="aboutToggle">
-          <span id="aboutToggleText">Читать полностью</span>
-          <svg id="aboutToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <aside class="exc-main-right">
-    <div class="sidebar">
-      <div class="s-title">Детали экскурсии</div>
-
-      <div class="d-table">
-        <span class="d-key">Время проведения</span>
-        <span class="d-val">Ежедневно<br>12:00, 14:00, 18:00.</span>
-
-        <span class="d-key">Длительность:</span>
-        <span class="d-val">2 часа</span>
-
-        <span class="d-key">Тип экскурсии:</span>
-        <span class="d-val">Автобусная</span>
-
-        <span class="d-key">Место встречи:</span>
-        <span class="d-val">Метро Кремлёвская «Памятник Дракону»</span>
-
-        <span class="d-key">Язык:</span>
-        <span class="d-val">Русский</span>
-      </div>
-
-      <div class="p-title">Стоимость</div>
-      <div class="price-block">
-        <div class="p-row"><span class="pn">Взрослые:</span><span class="pv">1100 ₽</span></div>
-        <div class="p-row"><span class="pn">Пенсионеры:</span><span class="pv">1000 ₽</span></div>
-        <div class="p-row"><span class="pn">Дети (7–14):</span><span class="pv">1000 ₽</span></div>
-        <div class="p-row"><span class="pn">Дети до 7 лет:</span><span class="pv">Бесплатно</span></div>
-      </div>
-
-      <button class="btn-green book-btn" data-book-btn>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-        </svg>
-        Забронировать
-      </button>
-
-      <button class="btn-green" href="https://wa.me/79001234567?text=Здравствуйте!%20Хочу%20записаться%20на%20экскурсию%20«Огни%20ночной%20Казани»" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
-        </svg>
-        Заявка по WhatsApp
-      </button>
-    </div>
-
-    <div class="info-block">
-    <div class="info-card">
-      <div class="info-card-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#17AA00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        Включено в стоимость
-      </div>
-      <ul class="info-list">
-        <li>Проезд на комфортабельных автобусах</li>
-        <li>Обслуживание профессиональными аккредитованными гидами</li>
-        <li>Страховка пассажиров</li>
-      </ul>
-      <div class="info-card-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        Не включено в стоимость
-      </div>
-      <ul class="info-list">
-        <li>Данная экскурсия не предполагает дополнительных сборов с туристов!</li>
-      </ul>
-    </div>
-    </div>
-  </aside>
-  
-</div>
-
-<!-- ══════════════════════════════════════════
-     ВАЖНАЯ ИНФОРМАЦИЯ
-══════════════════════════════════════════ -->
-<div class="exc-page" id="sec-info">
-  <h2 class="exc-section-title">Важная информация</h2>
-  <div class="info-grid">
-    <div class="info-card">
-      <div class="info-card-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#17AA00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
-        Включено в стоимость
-      </div>
-      <ul class="info-list">
-        <li>Проезд на комфортабельных автобусах</li>
-        <li>Обслуживание профессиональными аккредитованными гидами</li>
-        <li>Страховка пассажиров</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <div class="info-card-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        Не включено в стоимость
-      </div>
-      <ul class="info-list">
-        <li>Данная экскурсия не предполагает дополнительных сборов с туристов!</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <div class="info-card-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#f5a421" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Важно знать
-      </div>
-      <ul class="info-list">
-        <li>Место встречи: Метро Кремлёвская, памятник Дракону Зилянту</li>
-        <li>Рекомендуем прийти за 10 минут до начала экскурсии</li>
-        <li>Одевайтесь по погоде — вечером бывает прохладно</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <div class="info-card-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#4a90e2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Документы
-      </div>
-      <ul class="info-list">
-        <li>Документы не требуются</li>
-        <li>Подходит для детей любого возраста</li>
-        <li>Подходит для маломобильных граждан</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     МЕСТО ОТПРАВЛЕНИЯ
-══════════════════════════════════════════ -->
-<div class="exc-page" id="sec-departure">
-  <h2 class="exc-section-title">Место отправления</h2>
-  <div class="departure-wrap">
-    <div class="departure-info">
-      <div class="departure-point">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div>
-          <div class="departure-label">Место встречи</div>
-          <div class="departure-addr">Метро Кремлёвская, Памятник Дракону Зилянту</div>
-        </div>
-      </div>
-      <div class="departure-point">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <div>
-          <div class="departure-label">Время отправления</div>
-          <div class="departure-addr">12:00, 14:00, 18:00 — ежедневно</div>
-        </div>
-      </div>
-    </div>
-    <a class="departure-map"
-       href="https://yandex.ru/maps/?ll=49.106324%2C55.798551&z=17&pt=49.106324,55.798551,pm2rdl~"
-       target="_blank" rel="noopener">
-      <div class="map-placeholder">
-        <div class="map-grid"></div>
-        <div class="map-pin-icon">
-          <svg viewBox="0 0 24 24" fill="#17AA00" width="44" height="44"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </div>
-        <div class="map-label">Метро Кремлёвская</div>
-        <div class="map-sublabel">Нажмите, чтобы открыть в Яндекс Картах →</div>
-      </div>
-    </a>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     ПОХОЖИЕ ЭКСКУРСИИ
-══════════════════════════════════════════ -->
-<div class="exc-page" id="sec-similar">
-  <h2 class="exc-section-title">Вас может заинтересовать</h2>
-  <div class="similar-wrap">
-    <button class="sim-arrow sim-prev" id="simPrev">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="similar-track-outer">
-      <div class="similar-track" id="simTrack">
-        <div class="sim-card" onclick="window.location.href='#'">
-          <div class="sim-img"><img src="../img/excursion/1.png" alt="Речные прогулки" loading="lazy"></div>
-          <div class="sim-body"><div class="sim-title">Речные прогулки по Казани</div><div class="sim-meta">2 часа · Водная</div><div class="sim-price">от 1000 ₽</div></div>
-        </div>
-        <div class="sim-card" onclick="window.location.href='#'">
-          <div class="sim-img"><img src="../img/excursion/2.png" alt="Кремль" loading="lazy"></div>
-          <div class="sim-body"><div class="sim-title">Казанский Кремль и Кул-Шариф</div><div class="sim-meta">3 часа · Пешеходная</div><div class="sim-price">от 800 ₽</div></div>
-        </div>
-        <div class="sim-card" onclick="window.location.href='#'">
-          <div class="sim-img"><img src="../img/excursion/3.png" alt="Свияжск" loading="lazy"></div>
-          <div class="sim-body"><div class="sim-title">Экскурсия в Свияжск</div><div class="sim-meta">6 часов · Автобусная</div><div class="sim-price">от 1500 ₽</div></div>
-        </div>
-        <div class="sim-card" onclick="window.location.href='#'">
-          <div class="sim-img"><img src="../img/excursion/4.png" alt="Раифа" loading="lazy"></div>
-          <div class="sim-body"><div class="sim-title">Раифский монастырь</div><div class="sim-meta">4 часа · Автобусная</div><div class="sim-price">от 1200 ₽</div></div>
-        </div>
-        <div class="sim-card" onclick="window.location.href='#'">
-          <div class="sim-img"><img src="../img/excursion/1.png" alt="Обзорная" loading="lazy"></div>
-          <div class="sim-body"><div class="sim-title">Обзорная экскурсия по Казани</div><div class="sim-meta">2.5 часа · Автобусная</div><div class="sim-price">от 900 ₽</div></div>
-        </div>
-      </div>
-    </div>
-    <button class="sim-arrow sim-next" id="simNext">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-  </div>
-</div>
-
-
-<section class="reviews" id="sec-reviews">
+<section class="reviews">
         <div class="container">
 
             <div class="reviews-header">
@@ -887,6 +627,589 @@
         </div>
     </section>
 
+<!-- ══════════════════════════════════════════
+     TAB NAVIGATION
+══════════════════════════════════════════ -->
+<div class="exc-tabs-outer">
+  <div class="exc-tabs-wrap">
+    <nav class="exc-tabs" id="excTabs">
+      <a class="exc-tab active" data-target="sec-route" href="#sec-route">Маршрут</a>
+      <a class="exc-tab" data-target="sec-about" href="#sec-about">Об экскурсии</a>
+      <a class="exc-tab" data-target="sec-info" href="#sec-info">Важная информация</a>
+      <a class="exc-tab" data-target="sec-departure" href="#sec-departure">Место отправления</a>
+      <a class="exc-tab" data-target="sec-similar" href="#sec-similar">Похожие экскурсии</a>
+      <a class="exc-tab" data-target="excTourReviews" href="#excTourReviews">Отзывы</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     МАРШРУТ
+══════════════════════════════════════════ -->
+<div class="container">
+<div class="exc-main-grid">
+  <div class="exc-main-left">
+    <div class="exc-page" id="sec-route">
+      <h2 class="exc-section-title">Маршрут</h2>
+      <div class="route-grid">
+        <div class="route-item route-special route-start" onclick="window.location.href='#'">
+          <div class="route-label">
+            <span class="route-special-icon">⚑</span>
+            <span class="route-label-text">Сбор группы</span>
+          </div>
+          <div class="route-name">Памятник дракону Зилянту, метро «Кремлёвская»</div>
+        </div>
+        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">1</div><div class="route-name">Площадь Свободы</div></div>
+        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">2</div><div class="route-name">Дворец земледельцев</div></div>
+        <div class="route-item route-break" onclick="window.location.href='#'"><div class="route-num">3</div><div class="route-name">Кремлёвская набережная</div></div>
+        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">4</div><div class="route-name">ЗАГС «Чаша» дворец бракосочетания</div></div>
+        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">5</div><div class="route-name">Стадион «Казань-Арена»</div></div>
+        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">6</div><div class="route-name">Парки и набережные Казани</div></div>
+        <div class="route-item route-break" onclick="window.location.href='#'"><div class="route-num">7</div><div class="route-name">Парк Горького</div></div>
+        <div class="route-item" onclick="window.location.href='#'"><div class="route-num">8</div><div class="route-name">«Поющие фонтаны»</div></div>
+        <div class="route-item route-wide" onclick="window.location.href='#'"><div class="route-num">9</div><div class="route-name">Театр кукол «Экият»</div></div>
+        <div class="route-item route-special route-end route-break" onclick="window.location.href='#'">
+          <div class="route-label">
+            <span class="route-special-icon">⚑</span>
+            <span class="route-label-text">Конец экскурсии</span>
+          </div>
+          <div class="route-name">Памятник дракону Зилянту, метро «Кремлёвская»</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exc-page" id="sec-about">
+      
+      <div class="about-card">
+
+            <div class="about-header">
+                <h2>Об экскурсии «Огни ночной Казани»</h2>
+
+
+            </div>
+
+            <div class="about-content collapsed" id="aboutContent">
+                <div class="about-intro">
+                    <div class="about-intro-text">
+                        <p>
+                            С наступлением сумерек стихает дневная суета, и Казань превращается в загадочную восточную сказку. Ночные огни преображают облик города, он весь сияет и искрится. Фонари и подсветка зданий, светящиеся брызги летних фонтанов — незабываемое зрелище. Предлагаем посмотреть, как выглядит вечерняя Казань, экскурсия подарит настоящее наслаждение красотой столицы, а профессиональный гид расскажет о выдающихся исторических и современных достопримечательностях. «Хан Тур Казань» проводит ежедневные автобусные обзорные экскурсии по топовым местам ночной столицы.
+                        </p>
+                        <p>
+                            Разместившись в комфортабельном автобусе, вам остаётся только наслаждаться великолепными видами, слушая рассказ экскурсовода. Автобус делает остановки, чтобы туристы смогли фотографировать достопримечательности. Никакие слова не передадут красоту ночного города, это надо обязательно увидеть самим. Что вы увидите на вечерней экскурсии по Казани
+                        </p>
+                    </div>
+                </div>
+                <h3>Что вы увидите на вечерней экскурсии по Казани </h3>
+                <p>
+                    Столица Татарстана ― один из ведущих туристических объектов России. Тысячелетняя история города подарила ему множество исторических зданий, памятных мест. Современная архитектура сделала облик города интереснейшим местом для экскурсий, развлечений и отдыха. Великолепна ночная Казань, экскурсия на автобусе имеет самый оптимальный маршрут, чтобы туристы смогли увидеть топовые локации столицы.
+                </p>
+                <h3>Театр кукол «Экият»</h3>
+<p>
+                    Настоящий сказочный дворец в стиле Диснея. Башенки, флюгера, цветные витражи, колонны. В огнях подсветки чудесный детский замок поражает воображение.
+                </p>
+
+                <h3>Центральный дворец бракосочетаний «Чаша» </h3>
+                <p>Чаша в форме традиционного казана — символ любви и домашнего очага. Здание на набережной отражается в воде реки Казанка, переливаясь красочными огнями. Дворец охраняют 4 скульптуры крылатых барсов и драконов, чтобы семейные узы были крепкими.
+Удивительна вечерняя Казань, экскурсия продолжает свой маршрут мимо крупнейшего в Татарстане стадиона «Казань Арена». Вечерние огни стадиона виды издалека благодаря самому большому в Европе медиафасаду здания. Дворец Земледельцев представляет собой шедевр классической дворцовой архитектуры Европы. Подобные здания есть в Вене и Будапеште, Париже и Риме. В центре фасада растёт бронзовое дерево 20 м высотой. В вечернее время весь дворец освещён белым светом, а дерево и купол зелёным, создавая впечатление, что крона полна листьев.
+</p>
+
+                <h3>Казанский Кремль</h3>
+
+                  <p>Казанский Кремль великолепен днём, но его обязательно нужно посмотреть в ночных огнях. Изумительную Казань ночные экскурсии по городу покажут с новой красочной стороны. Туристы увидят потрясающей красоты белую мечеть Кул-Шариф, сияющую бирюзой куполов и минаретов. Там же расположен старинный православный Благовещенский собор. Он тоже белоснежный с яркими голубыми куполами. Казанский Кремль является визитной карточкой столицы.
+</p>
+
+                
+
+            </div>
+
+            <button class="about-toggle" id="aboutToggle">
+                <span id="aboutToggleText">Читать полностью</span>
+                <span class="arrow">▾</span>
+            </button>
+
+        </div>
+    </div>
+    <div class="exc-page" id="sec-info">
+  <h2 class="exc-section-title">Важная информация</h2>
+  <div class="info-feature-grid">
+    <div class="info-feature-card">
+      <div class="info-feature-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M33.8 44H14.2C10.8 44 8 41.22 8 37.8V10.2C8 6.80001 10.78 4 14.2 4H33.8C37.2 4 40 6.78001 40 10.2V37.8C40 41.22 37.22 44 33.8 44Z" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M37 26H11C9.34 26 8 24.66 8 23V19C8 17.34 9.34 16 11 16H37C38.66 16 40 17.34 40 19V23C40 24.66 38.66 26 37 26Z" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M16.989 35.3999H17.007" stroke="#17AA00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M30.989 35.3999H31.007" stroke="#17AA00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19 10H29" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+
+      </div>
+      <div class="info-feature-text">Проезд на комфортабельных автобусах</div>
+    </div>
+
+    <div class="info-feature-card">
+      <div class="info-feature-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 24C29.5228 24 34 19.5228 34 14C34 8.47715 29.5228 4 24 4C18.4772 4 14 8.47715 14 14C14 19.5228 18.4772 24 24 24Z" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.82031 44C6.82031 36.26 14.5203 30 24.0003 30C25.9203 30 27.7803 30.26 29.5203 30.74" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44 36C44 37.5 43.58 38.92 42.84 40.12C42.42 40.84 41.88 41.48 41.26 42C39.86 43.26 38.02 44 36 44C33.08 44 30.54 42.44 29.16 40.12C28.42 38.92 28 37.5 28 36C28 33.48 29.16 31.22 31 29.76C32.38 28.66 34.12 28 36 28C40.42 28 44 31.58 44 36Z" stroke="#17AA00" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32.8809 36L34.8608 37.98L39.1208 34.04" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+      </div>
+      <div class="info-feature-text">Обслуживание профессиональными аккредитованными гидами</div>
+    </div>
+
+    <div class="info-feature-card">
+      <div class="info-feature-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M37 25.3V32.7C37 38.94 31.18 44 24 44C16.82 44 11 38.94 11 32.7V25.3C11 31.54 16.82 36 24 36C31.18 36 37 31.54 37 25.3Z" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37 15.3C37 17.12 36.5 18.8 35.62 20.24C33.48 23.76 29.08 26 24 26C18.92 26 14.52 23.76 12.38 20.24C11.5 18.8 11 17.12 11 15.3C11 12.18 12.46 9.36 14.8 7.32C17.16 5.26 20.4 4 24 4C27.6 4 30.84 5.26 33.2 7.3C35.54 9.36 37 12.18 37 15.3Z" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37 15.3V25.3C37 31.54 31.18 36 24 36C16.82 36 11 31.54 11 25.3V15.3C11 9.06 16.82 4 24 4C27.6 4 30.84 5.26 33.2 7.3C35.54 9.36 37 12.18 37 15.3Z" stroke="#17AA00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+      </div>
+      <div class="info-feature-text">Без дополнительных сборов с туристов!</div>
+    </div>
+  </div>
+
+  <div class="info-note-strip">
+    <div class="strip-info">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.9993 2.66659C23.3327 2.66659 29.3327 8.66659 29.3327 15.9999C29.3327 23.3333 23.3327 29.3333 15.9993 29.3333C8.66602 29.3333 2.66602 23.3333 2.66602 15.9999C2.66602 8.66659 8.66602 2.66659 15.9993 2.66659Z" stroke="#F20101" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 21.3333V14.6666" stroke="#F20101" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.9922 10.6667H16.0042" stroke="#F20101" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    <span>Программа экскурсии может измениться по независящим от туроператора обстоятельствам (погода, трафик на дорогах и т.п.)</span>
+  </div>
+  </div>
+</div>
+  </div>
+
+  <aside class="exc-main-right">
+    <div class="sidebar">
+      <div class="s-title">Детали экскурсии</div>
+
+      <div class="d-table">
+        <span class="d-key">Время проведения</span>
+        <span class="d-val">Ежедневно<br>12:00, 14:00, 18:00.</span>
+
+        <span class="d-key">Длительность:</span>
+        <span class="d-val">2 часа</span>
+
+        <span class="d-key">Тип экскурсии:</span>
+        <span class="d-val">Автобусная</span>
+
+        <span class="d-key">Место встречи:</span>
+        <span class="d-val">Метро Кремлёвская «Памятник Дракону»</span>
+
+        <span class="d-key">Язык:</span>
+        <span class="d-val">Русский</span>
+      </div>
+
+      <div class="p-title">Стоимость</div>
+      <div class="price-block">
+        <div class="p-row"><span class="pn">Взрослые:</span><span class="pv">1100 ₽</span></div>
+        <div class="p-row"><span class="pn">Пенсионеры:</span><span class="pv">1000 ₽</span></div>
+        <div class="p-row"><span class="pn">Дети (7–14):</span><span class="pv">1000 ₽</span></div>
+        <div class="p-row"><span class="pn">Дети до 7 лет:</span><span class="pv">Бесплатно</span></div>
+      </div>
+
+      <button class="btn-green book-btn" data-book-btn>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        Забронировать
+      </button>
+
+      <button class="btn-green" href="https://wa.me/79001234567?text=Здравствуйте!%20Хочу%20записаться%20на%20экскурсию%20«Огни%20ночной%20Казани»" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+        </svg>
+        Заявка по WhatsApp
+      </button>
+    </div>
+
+    <div class="info-block">
+    <div class="info-card">
+      <div class="info-card-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#17AA00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.75 11.9999L10.58 14.8299L16.25 9.16992" stroke="#17AA00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+        Включено в стоимость
+      </div>
+      <ul class="info-list">
+        <li>Проезд на комфортабельных автобусах</li>
+        <li>Обслуживание профессиональными аккредитованными гидами</li>
+      </ul>
+      <div class="info-card-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#F20101" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.16992 14.8299L14.8299 9.16992" stroke="#F20101" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.8299 14.8299L9.16992 9.16992" stroke="#F20101" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        Не включено в стоимость
+      </div>
+      <ul class="info-list">
+        <li>Данная экскурсия не предполагает дополнительных сборов с туристов!</li>
+      </ul>
+    </div>
+    </div>
+  </aside>
+  
+  </div>
+  <hr>
+</div>
+
+
+
+<!-- ══════════════════════════════════════════
+     МЕСТО ОТПРАВЛЕНИЯ
+══════════════════════════════════════════ -->
+<div class="container">
+<div class="exc-page" id="sec-departure">
+  <h2 class="exc-section-title">Место отправления экскурсии</h2>
+  <div class="departure-cards">
+    <article class="departure-card">
+      <div class="departure-card-media">
+        <img src="../img/excursion/4.png" alt="Памятник дракону Зилянту" loading="lazy" decoding="async">
+      </div>
+      <div class="departure-card-body">
+        <h3>Как добраться</h3>
+        <p class="departure-stop">От ост. «Центральный стадион»</p>
+        <ul class="departure-list">
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.25 19.1001C20.25 19.6501 19.8 20.1001 19.25 20.1001H4.75C4.2 20.1001 3.75 19.6501 3.75 19.1001V3.6001C3.75 3.0501 4.2 2.6001 4.75 2.6001H19.25C19.8 2.6001 20.25 3.0501 20.25 3.6001V19.1001Z" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.0647 20.1357V22.1987C9.0647 22.7487 8.6147 23.1987 8.0647 23.1987H6.2207C5.6707 23.1987 5.2207 22.7487 5.2207 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M18.7776 20.1357V22.1987C18.7776 22.7487 18.3286 23.1987 17.7776 23.1987H15.9336C15.3846 23.1987 14.9336 22.7487 14.9336 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M3.82812 14.25H20.1721" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 7.41699V14.094" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M9.5 5H14.5" stroke="#17AA00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.8184 17.2329H16.8284" stroke="#17AA00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.16992 17.2329H7.17992" stroke="#17AA00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0.78125 10.7312V8.4502C0.78125 7.9002 1.23125 7.4502 1.78125 7.4502H22.2193C22.7693 7.4502 23.2193 7.9002 23.2193 8.4502V10.7312" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            <b>Автобус</b> № 7, 15, 29, 35а, 37, 47, 74а, 75, 98.</li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.25 19.1001C20.25 19.6501 19.8 20.1001 19.25 20.1001H4.75C4.2 20.1001 3.75 19.6501 3.75 19.1001V5.6001C3.75 5.0501 4.2 4.6001 4.75 4.6001H19.25C19.8 4.6001 20.25 5.0501 20.25 5.6001V19.1001Z" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0.78125 10.7312V8.4502C0.78125 7.9002 1.23125 7.4502 1.78125 7.4502H22.2193C22.7693 7.4502 23.2193 7.9002 23.2193 8.4502V10.7312" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.0647 20.1357V22.1987C9.0647 22.7487 8.6147 23.1987 8.0647 23.1987H6.2207C5.6707 23.1987 5.2207 22.7487 5.2207 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M18.7776 20.1357V22.1987C18.7776 22.7487 18.3276 23.1987 17.7776 23.1987H15.9336C15.3836 23.1987 14.9336 22.7487 14.9336 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M10.6946 4.49375L7.55859 0.84375" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.4758 4.49375L13.3398 0.84375" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.64062 17.1929H8.33763" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.6621 17.1929H17.3591" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.82812 14.25H20.1721" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 7.46875V14.0938" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+
+            <b>Троллейбус</b> № 2</li>
+        </ul>
+        <p class="departure-stop">От ост. «Дворец спорта»</p>
+        <ul class="departure-list">
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.25 19.1001C20.25 19.6501 19.8 20.1001 19.25 20.1001H4.75C4.2 20.1001 3.75 19.6501 3.75 19.1001V3.6001C3.75 3.0501 4.2 2.6001 4.75 2.6001H19.25C19.8 2.6001 20.25 3.0501 20.25 3.6001V19.1001Z" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.0647 20.1357V22.1987C9.0647 22.7487 8.6147 23.1987 8.0647 23.1987H6.2207C5.6707 23.1987 5.2207 22.7487 5.2207 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M18.7776 20.1357V22.1987C18.7776 22.7487 18.3286 23.1987 17.7776 23.1987H15.9336C15.3846 23.1987 14.9336 22.7487 14.9336 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M3.82812 14.25H20.1721" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 7.41699V14.094" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M9.5 5H14.5" stroke="#17AA00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.8184 17.2329H16.8284" stroke="#17AA00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.16992 17.2329H7.17992" stroke="#17AA00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0.78125 10.7312V8.4502C0.78125 7.9002 1.23125 7.4502 1.78125 7.4502H22.2193C22.7693 7.4502 23.2193 7.9002 23.2193 8.4502V10.7312" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+           <b>Автобус</b> № 35а, 37, 47, 98</li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.25 19.1001C20.25 19.6501 19.8 20.1001 19.25 20.1001H4.75C4.2 20.1001 3.75 19.6501 3.75 19.1001V5.6001C3.75 5.0501 4.2 4.6001 4.75 4.6001H19.25C19.8 4.6001 20.25 5.0501 20.25 5.6001V19.1001Z" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0.78125 10.7312V8.4502C0.78125 7.9002 1.23125 7.4502 1.78125 7.4502H22.2193C22.7693 7.4502 23.2193 7.9002 23.2193 8.4502V10.7312" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.0647 20.1357V22.1987C9.0647 22.7487 8.6147 23.1987 8.0647 23.1987H6.2207C5.6707 23.1987 5.2207 22.7487 5.2207 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M18.7776 20.1357V22.1987C18.7776 22.7487 18.3276 23.1987 17.7776 23.1987H15.9336C15.3836 23.1987 14.9336 22.7487 14.9336 22.1987V20.1357" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M10.6946 4.49375L7.55859 0.84375" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.4758 4.49375L13.3398 0.84375" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.64062 17.1929H8.33763" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.6621 17.1929H17.3591" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.82812 14.25H20.1721" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 7.46875V14.0938" stroke="#17AA00" stroke-width="1.5" stroke-miterlimit="10"/>
+</svg>
+            <b>Троллейбус</b> № 7</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="departure-card">
+      <a class="departure-card-media departure-card-map"
+         href="https://yandex.ru/maps/?ll=49.106324%2C55.798551&z=17&pt=49.106324,55.798551,pm2rdl~"
+         target="_blank" rel="noopener">
+        <img src="https://static-maps.yandex.ru/1.x/?ll=49.106324,55.798551&z=16&size=450,260&l=map&pt=49.106324,55.798551,pm2grm"
+             alt="Карта места встречи" loading="lazy" decoding="async">
+      </a>
+      <div class="departure-card-body">
+        <h3>Место встречи</h3>
+        <p class="departure-place">Станция метро «Кремлёвская», ориентир: памятник мифическому змею-дракону Зиланту</p>
+        <svg class="departure-metro-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M54.998 44.8642L42.5393 13.3335L32.0006 31.7655L21.5046 13.3335L9.00332 44.8642H5.33398V49.6428H24.1927V44.8642H21.3767L24.1073 37.0135L32.0006 49.9842L39.894 37.0135L42.6246 44.8642H39.8086V49.6428H58.6673V44.8642H54.998Z" fill="#17AA00"/>
+</svg>
+
+      </div>
+    </article>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ПОХОЖИЕ ЭКСКУРСИИ
+══════════════════════════════════════════ -->
+<div class="exc-page" id="sec-similar">
+  
+<div class="container">
+  <div class="similar-head">
+    <h2 class="exc-section-title">Вас может заинтересовать</h2>
+    <div class="similar-nav">
+      <button class="sim-arrow sim-prev" id="simPrev" type="button" aria-label="Назад">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="sim-arrow sim-next" id="simNext" type="button" aria-label="Вперед">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="similar-wrap">
+    <div class="similar-track-outer">
+      <div class="similar-track" id="simTrack">
+        <div class="excursion-card" data-link="/excursion/1">
+          <div class="card-image">
+            <img src="../img/card/card1.png" alt="Обзорная экскурсия">
+            <span class="badge">Автобусная</span>
+            <span class="discount">-100%</span>
+          </div>
+          <div class="card-content">
+            <div class="rating"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.15327 2.33995L10.3266 4.68662C10.4866 5.01328 10.9133 5.32662 11.2733 5.38662L13.3999 5.73995C14.7599 5.96662 15.0799 6.95328 14.0999 7.92662L12.4466 9.57995C12.1666 9.85995 12.0133 10.3999 12.0999 10.7866L12.5733 12.8333C12.9466 14.4533 12.0866 15.0799 10.6533 14.2333L8.65994 13.0533C8.29994 12.8399 7.70661 12.8399 7.33994 13.0533L5.34661 14.2333C3.91994 15.0799 3.05327 14.4466 3.42661 12.8333L3.89994 10.7866C3.98661 10.3999 3.83327 9.85995 3.55327 9.57995L1.89994 7.92662C0.926606 6.95328 1.23994 5.96662 2.59994 5.73995L4.72661 5.38662C5.07994 5.32662 5.50661 5.01328 5.66661 4.68662L6.83994 2.33995C7.47994 1.06662 8.51994 1.06662 9.15327 2.33995Z"
+                                fill="#FFC700" />
+                        </svg><b>4,93</b> (33 отзыва)</div>
+            <h3>Обзорная экскурсия по Казани с посещением Кремля</h3>
+            <div class="card-info"><span>4 часа</span><span>Ежедневно</span></div>
+            <div class="price"><span class="old-price">1500</span><span class="new-price">1100 ₽</span></div>
+            <button class="book-btn" type="button">Забронировать</button>
+          </div>
+        </div>
+
+        <div class="excursion-card" data-link="/excursion/2">
+          <div class="card-image">
+            <img src="../img/card/card2.png" alt="Ночная Казань">
+            <span class="badge">Автобусная</span>
+            <span class="discount">-100%</span>
+          </div>
+          <div class="card-content">
+            <div class="rating"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.15327 2.33995L10.3266 4.68662C10.4866 5.01328 10.9133 5.32662 11.2733 5.38662L13.3999 5.73995C14.7599 5.96662 15.0799 6.95328 14.0999 7.92662L12.4466 9.57995C12.1666 9.85995 12.0133 10.3999 12.0999 10.7866L12.5733 12.8333C12.9466 14.4533 12.0866 15.0799 10.6533 14.2333L8.65994 13.0533C8.29994 12.8399 7.70661 12.8399 7.33994 13.0533L5.34661 14.2333C3.91994 15.0799 3.05327 14.4466 3.42661 12.8333L3.89994 10.7866C3.98661 10.3999 3.83327 9.85995 3.55327 9.57995L1.89994 7.92662C0.926606 6.95328 1.23994 5.96662 2.59994 5.73995L4.72661 5.38662C5.07994 5.32662 5.50661 5.01328 5.66661 4.68662L6.83994 2.33995C7.47994 1.06662 8.51994 1.06662 9.15327 2.33995Z"
+                                fill="#FFC700" />
+                        </svg><b>5</b> (22 отзыва)</div>
+            <h3>Экскурсия «Ночная Казань с колесом обозрения»</h3>
+            <div class="card-info"><span>2,5 часа</span><span>Ежедневно</span></div>
+            <div class="price"><span class="old-price">1600</span><span class="new-price">1400 ₽</span></div>
+            <button class="book-btn" type="button">Забронировать</button>
+          </div>
+        </div>
+
+        <div class="excursion-card" data-link="/excursion/3">
+          <div class="card-image">
+            <img src="../img/card/card3.png" alt="Свияжск и Храм всех религий">
+            <span class="badge">Автобусная</span>
+            <span class="discount">-100%</span>
+          </div>
+          <div class="card-content">
+            <div class="rating"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.15327 2.33995L10.3266 4.68662C10.4866 5.01328 10.9133 5.32662 11.2733 5.38662L13.3999 5.73995C14.7599 5.96662 15.0799 6.95328 14.0999 7.92662L12.4466 9.57995C12.1666 9.85995 12.0133 10.3999 12.0999 10.7866L12.5733 12.8333C12.9466 14.4533 12.0866 15.0799 10.6533 14.2333L8.65994 13.0533C8.29994 12.8399 7.70661 12.8399 7.33994 13.0533L5.34661 14.2333C3.91994 15.0799 3.05327 14.4466 3.42661 12.8333L3.89994 10.7866C3.98661 10.3999 3.83327 9.85995 3.55327 9.57995L1.89994 7.92662C0.926606 6.95328 1.23994 5.96662 2.59994 5.73995L4.72661 5.38662C5.07994 5.32662 5.50661 5.01328 5.66661 4.68662L6.83994 2.33995C7.47994 1.06662 8.51994 1.06662 9.15327 2.33995Z"
+                                fill="#FFC700" />
+                        </svg><b>4,8</b> (15 отзывов)</div>
+            <h3>Экскурсия в Свияжск и Храм всех религий (автобус+теплоход)</h3>
+            <div class="card-info"><span>6 часов</span><span>Ежедневно</span></div>
+            <div class="price"><span class="old-price">2100</span><span class="new-price">2400 ₽</span></div>
+            <button class="book-btn" type="button">Забронировать</button>
+          </div>
+        </div>
+
+        <div class="excursion-card" data-link="/excursion/4">
+          <div class="card-image">
+            <img src="../img/card/card4.png" alt="Свияжск и Раифа">
+            <span class="badge">Автобусная</span>
+            <span class="discount">-100%</span>
+          </div>
+          <div class="card-content">
+            <div class="rating"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.15327 2.33995L10.3266 4.68662C10.4866 5.01328 10.9133 5.32662 11.2733 5.38662L13.3999 5.73995C14.7599 5.96662 15.0799 6.95328 14.0999 7.92662L12.4466 9.57995C12.1666 9.85995 12.0133 10.3999 12.0999 10.7866L12.5733 12.8333C12.9466 14.4533 12.0866 15.0799 10.6533 14.2333L8.65994 13.0533C8.29994 12.8399 7.70661 12.8399 7.33994 13.0533L5.34661 14.2333C3.91994 15.0799 3.05327 14.4466 3.42661 12.8333L3.89994 10.7866C3.98661 10.3999 3.83327 9.85995 3.55327 9.57995L1.89994 7.92662C0.926606 6.95328 1.23994 5.96662 2.59994 5.73995L4.72661 5.38662C5.07994 5.32662 5.50661 5.01328 5.66661 4.68662L6.83994 2.33995C7.47994 1.06662 8.51994 1.06662 9.15327 2.33995Z"
+                                fill="#FFC700" />
+                        </svg><b>4,95</b> (153 отзыва)</div>
+            <h3>Экскурсия в Свияжск, Раифский монастырь и Храм всех религий</h3>
+            <div class="card-info"><span>8 часов</span><span>Ежедневно</span></div>
+            <div class="price"><span class="old-price">2900</span><span class="new-price">2200 ₽</span></div>
+            <button class="book-btn" type="button">Забронировать</button>
+          </div>
+        </div>
+
+        <div class="excursion-card" data-link="/excursion/1">
+          <div class="card-image">
+            <img src="../img/card/card1.png" alt="Обзорная экскурсия">
+            <span class="badge">Автобусная</span>
+            <span class="discount">-100%</span>
+          </div>
+          <div class="card-content">
+            <div class="rating"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.15327 2.33995L10.3266 4.68662C10.4866 5.01328 10.9133 5.32662 11.2733 5.38662L13.3999 5.73995C14.7599 5.96662 15.0799 6.95328 14.0999 7.92662L12.4466 9.57995C12.1666 9.85995 12.0133 10.3999 12.0999 10.7866L12.5733 12.8333C12.9466 14.4533 12.0866 15.0799 10.6533 14.2333L8.65994 13.0533C8.29994 12.8399 7.70661 12.8399 7.33994 13.0533L5.34661 14.2333C3.91994 15.0799 3.05327 14.4466 3.42661 12.8333L3.89994 10.7866C3.98661 10.3999 3.83327 9.85995 3.55327 9.57995L1.89994 7.92662C0.926606 6.95328 1.23994 5.96662 2.59994 5.73995L4.72661 5.38662C5.07994 5.32662 5.50661 5.01328 5.66661 4.68662L6.83994 2.33995C7.47994 1.06662 8.51994 1.06662 9.15327 2.33995Z"
+                                fill="#FFC700" />
+                        </svg><b>4,93</b> (33 отзыва)</div>
+            <h3>Обзорная экскурсия по Казани с посещением Кремля</h3>
+            <div class="card-info"><span>4 часа</span><span>Ежедневно</span></div>
+            <div class="price"><span class="old-price">1500</span><span class="new-price">1100 ₽</span></div>
+            <button class="book-btn" type="button">Забронировать</button>
+          </div>
+        </div>
+
+        <div class="excursion-card" data-link="/excursion/2">
+          <div class="card-image">
+            <img src="../img/card/card2.png" alt="Ночная Казань">
+            <span class="badge">Автобусная</span>
+            <span class="discount">-100%</span>
+          </div>
+          <div class="card-content">
+            <div class="rating"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.15327 2.33995L10.3266 4.68662C10.4866 5.01328 10.9133 5.32662 11.2733 5.38662L13.3999 5.73995C14.7599 5.96662 15.0799 6.95328 14.0999 7.92662L12.4466 9.57995C12.1666 9.85995 12.0133 10.3999 12.0999 10.7866L12.5733 12.8333C12.9466 14.4533 12.0866 15.0799 10.6533 14.2333L8.65994 13.0533C8.29994 12.8399 7.70661 12.8399 7.33994 13.0533L5.34661 14.2333C3.91994 15.0799 3.05327 14.4466 3.42661 12.8333L3.89994 10.7866C3.98661 10.3999 3.83327 9.85995 3.55327 9.57995L1.89994 7.92662C0.926606 6.95328 1.23994 5.96662 2.59994 5.73995L4.72661 5.38662C5.07994 5.32662 5.50661 5.01328 5.66661 4.68662L6.83994 2.33995C7.47994 1.06662 8.51994 1.06662 9.15327 2.33995Z"
+                                fill="#FFC700" />
+                        </svg><b>5</b> (22 отзыва)</div>
+            <h3>Экскурсия «Ночная Казань с колесом обозрения»</h3>
+            <div class="card-info"><span>2,5 часа</span><span>Ежедневно</span></div>
+            <div class="price"><span class="old-price">1600</span><span class="new-price">1400 ₽</span></div>
+            <button class="book-btn" type="button">Забронировать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="similar-mobile-controls">
+      <div class="similar-mobile-progress">
+        <span id="simMobileProgress"></span>
+      </div>
+      <div class="similar-mobile-nav">
+        <button class="sim-arrow sim-prev-mob" type="button" aria-label="Назад">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="sim-arrow sim-next-mob" type="button" aria-label="Вперед">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="tour-thanks-modal" id="tourThanksModal" aria-hidden="true">
+  <div class="tour-thanks-dialog">
+    <h3>Спасибо за ваш отзыв</h3>
+    <p>Ваш отзыв опубликован.</p>
+    <button type="button" id="tourThanksClose">Закрыть</button>
+  </div>
+</div>
+
+<section class="topics-section">
+        <div class="container">
+            <div class="topics-box">
+
+                <h2>Еще темы экскурсий в Казани</h2>
+
+                <div class="topics-group">
+                    <h3>Категория</h3>
+                    <div class="topics-list">
+                        <div class="topic-item" data-category="Индивидуальные экскурсии">Индивидуальные экскурсии</div>
+                        <div class="topic-item" data-category="Групповые экскурсии в Казани">Групповые экскурсии в
+                            Казани</div>
+                        <div class="topic-item" data-category="Школьные экскурсии">Школьные экскурсии</div>
+                        <div class="topic-item" data-category="Речные прогулки">Речные прогулки в Казани</div>
+                        <div class="topic-item" data-category="Речные прогулки">Пешеходная экскурсия по Казани</div>
+                        <div class="topic-item" data-category="Речные прогулки">Экскурсия по Казани на автобусе</div>
+                        <div class="topic-item more-btn">Еще...</div>
+                    </div>
+                </div>
+
+                <div class="topics-group">
+                    <h3>Достопримечательности</h3>
+                    <div class="topics-list">
+                        <div class="topic-item">По старо татарской слободе</div>
+                        <div class="topic-item">Храм + всех религий</div>
+                        <div class="topic-item">Улица Баумана Казань</div>
+                        <div class="topic-item">Дворец земледельцев</div>
+                        <div class="topic-item">Экскурсия в Раифский</div>
+                        <div class="topic-item">Кул шариф</div>
+                        <div class="topic-item">Театр экият</div>
+                        <div class="topic-item">Экскурсия туган авылым</div>
+                        <div class="topic-item">Башня сююмбике</div>
+                        <div class="topic-item">Казань арена</div>
+                        <div class="topic-item">Дом Ушаковой</div>
+                        <div class="topic-item more-btn">Еще...</div>
+                    </div>
+                </div>
+
+                <div class="topics-group">
+                    <h3>Форматы</h3>
+                    <div class="topics-list">
+                        <div class="topic-item">Казань экскурсии выходного дня</div>
+                        <div class="topic-item">Авторские экскурсии Казань</div>
+                        <div class="topic-item">Казань экскурсии для детей</div>
+                        <div class="topic-item more-btn">Еще...</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-reviews-sec" id="excTourReviews">
+  <div class="container">
+    <div class="tour-reviews-head">
+      <h2>Отзывы по экскурсии</h2>
+      <a class="tour-reviews-all" href="reviews.html">Все отзывы</a>
+    </div>
+
+    <div class="tour-reviews-grid">
+      <div class="tour-reviews-left">
+        <div class="tour-reviews-list" id="tourReviewsList"></div>
+        <div class="tour-reviews-pagination" id="tourReviewsPagination"></div>
+        <a class="tour-reviews-all-mobile" href="reviews.html">Все отзывы</a>
+      </div>
+
+      <aside class="tour-reviews-right">
+        <h3>Оставьте свой отзыв</h3>
+        <div class="tour-reviews-stars" aria-hidden="true">★★★★★</div>
+        <form id="tourReviewForm">
+          <input id="tourReviewName" type="text" placeholder="Ваше имя" required>
+          <textarea id="tourReviewText" placeholder="Отзыв" rows="7" required></textarea>
+          <label class="tour-reviews-agree">
+            <input id="tourReviewAgree" type="checkbox" required>
+            <span>Я подтверждаю, что согласен с условиями политики обработки персональных данных.</span>
+          </label>
+          <button type="submit">Отправить</button>
+        </form>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
 <!-- BOOKING MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
@@ -903,6 +1226,265 @@
     <button class="btn-submit" onclick="doSubmit()">Отправить заявку</button>
   </div>
 </div>
+
+<div class="photo-modal" id="photoModal" aria-hidden="true">
+  <button class="photo-modal-close" id="photoModalClose" type="button" aria-label="Закрыть">×</button>
+  <img id="photoModalImg" src="" alt="Фото экскурсии">
+</div>
+
+<footer class="footer ">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-top-left">
+                        <span><svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.72 17.08C20.72 17.44 20.64 17.81 20.47 18.17C20.3 18.53 20.08 18.87 19.79 19.19C19.3 19.73 18.76 20.12 18.15 20.37C17.55 20.62 16.9 20.75 16.2 20.75C15.18 20.75 14.09 20.51 12.94 20.02C11.79 19.53 10.64 18.87 9.5 18.04C8.35 17.2 7.26 16.27 6.22 15.24C5.19 14.2 4.26 13.11 3.43 11.97C2.61 10.83 1.95 9.69 1.47 8.56C0.99 7.42 0.75 6.33 0.75 5.29C0.75 4.61 0.87 3.96 1.11 3.36C1.35 2.75 1.73 2.19 2.26 1.69C2.9 1.06 3.6 0.75 4.34 0.75C4.62 0.75 4.9 0.81 5.15 0.93C5.41 1.05 5.64 1.23 5.82 1.49L8.14 4.76C8.32 5.01 8.45 5.24 8.54 5.46C8.63 5.67 8.68 5.88 8.68 6.07C8.68 6.31 8.61 6.55 8.47 6.78C8.34 7.01 8.15 7.25 7.91 7.49L7.15 8.28C7.04 8.39 6.99 8.52 6.99 8.68C6.99 8.76 7 8.83 7.02 8.91C7.05 8.99 7.08 9.05 7.1 9.11C7.28 9.44 7.59 9.87 8.03 10.39C8.48 10.91 8.96 11.44 9.48 11.97C10.02 12.5 10.54 12.99 11.07 13.44C11.59 13.88 12.02 14.18 12.36 14.36C12.41 14.38 12.47 14.41 12.54 14.44C12.62 14.47 12.7 14.48 12.79 14.48C12.96 14.48 13.09 14.42 13.2 14.31L13.96 13.56C14.21 13.31 14.45 13.12 14.68 13C14.91 12.86 15.14 12.79 15.39 12.79C15.58 12.79 15.78 12.83 16 12.92C16.22 13.01 16.45 13.14 16.7 13.31L20.01 15.66C20.27 15.84 20.45 16.05 20.56 16.3C20.66 16.55 20.72 16.8 20.72 17.08Z"
+                                    stroke="white" stroke-width="1.5" stroke-miterlimit="10" />
+                            </svg>
+                            8-937-597-60-62</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M15.7109 15.1798L12.6109 13.3298C12.0709 13.0098 11.6309 12.2398 11.6309 11.6098V7.50977"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            с 9:00 до 20:00</span>
+                        <span class="footer-address" id="footerAddress">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.0009 13.4299C13.724 13.4299 15.1209 12.0331 15.1209 10.3099C15.1209 8.58681 13.724 7.18994 12.0009 7.18994C10.2777 7.18994 8.88086 8.58681 8.88086 10.3099C8.88086 12.0331 10.2777 13.4299 12.0009 13.4299Z"
+                                    stroke="white" stroke-width="1.5" />
+                                <path
+                                    d="M3.61971 8.49C5.58971 -0.169998 18.4197 -0.159997 20.3797 8.5C21.5297 13.58 18.3697 17.88 15.5997 20.54C13.5897 22.48 10.4097 22.48 8.38971 20.54C5.62971 17.88 2.46971 13.57 3.61971 8.49Z"
+                                    stroke="white" stroke-width="1.5" />
+                            </svg>
+                            г. Казань, ул. Баумана, д. 26
+                        </span>
+                    </div>
+
+                    <button class="footer-call" id="footerCallBtn">
+                        Заказать звонок
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="container">
+            <div class="footer-main">
+
+                <div class="footer-column">
+                    <a href="/about.html">О нас</a>
+                    <a href="/partners.html">Партнерам</a>
+                    <a href="/payment.html">Способы оплаты</a>
+                    <a href="/memo.html">Памятка туристу</a>
+                    <a href="https://yandex.ru/maps" target="_blank">Отзывы</a>
+                    <a href="/contacts.html">Контакты</a>
+                </div>
+
+                <div class="footer-column">
+                    <a href="/schedule.html" class="highlight">Полное расписание экскурсий</a>
+                    <a href="/catalog?category=Индивидуальные">Индивидуальные экскурсии</a>
+                    <a href="/catalog?category=Групповые">Групповые экскурсии</a>
+                    <a href="/catalog?category=Школьные">Экскурсии для школьников</a>
+                    <a href="/catalog?category=Теплоход">Экскурсии на теплоходе</a>
+                    <a href="/catalog?category=Школьные">Пешие экскурсии</a>
+                    <a href="/catalog?category=Школьные">Автобусные</a>
+                    <a href="/catalog?category=Школьные">Достопримечательности</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Экскурсии по Казани</h4>
+                    <a href="/catalog?direction=Москва">Экскурсия на голубые озера</a>
+                    <a href="/catalog?direction=СПб">Ночная Казань</a>
+                    <a href="/catalog?direction=Нижний">На двухэтажном автобусе</a>
+                    <br>
+                    <h4>Разные направления</h4>
+                    <a href="/catalog?direction=Москва">На теплоходе в Свияжск</a>
+                    <a href="/catalog?direction=СПб">Индивидуально в Раифу</a>
+                    <a href="/catalog?direction=Нижний">На теплоходе в Булгар</a>
+                    <a href="/catalog?direction=Нижний">Экскурсия в Йошкар-Ола</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>По отправлению</h4>
+                    <a href="/catalog?direction=Москва">Из Москвы</a>
+                    <a href="/catalog?direction=СПб">Из Санкт-Петербурга</a>
+                    <a href="/catalog?direction=Нижний">Из Нижнего Новгорода</a>
+                    <br>
+                    <h4>По дням</h4>
+                    <a href="/catalog?direction=Москва">На 2 дня</a>
+                    <a href="/catalog?direction=СПб">На 3 дня</a>
+                    <a href="/catalog?direction=Нижний">На 4 дня</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <img src="img/logo2.png" alt="" srcset="img/logo2.png">
+                    <div class="block-info">
+                        <span class="footer-address" id="footerAddress">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.0009 13.4299C13.724 13.4299 15.1209 12.0331 15.1209 10.3099C15.1209 8.58681 13.724 7.18994 12.0009 7.18994C10.2777 7.18994 8.88086 8.58681 8.88086 10.3099C8.88086 12.0331 10.2777 13.4299 12.0009 13.4299Z"
+                                    stroke="white" stroke-width="1.5" />
+                                <path
+                                    d="M3.61971 8.49C5.58971 -0.169998 18.4197 -0.159997 20.3797 8.5C21.5297 13.58 18.3697 17.88 15.5997 20.54C13.5897 22.48 10.4097 22.48 8.38971 20.54C5.62971 17.88 2.46971 13.57 3.61971 8.49Z"
+                                    stroke="white" stroke-width="1.5" />
+                            </svg>
+                            г. Казань, ул. Баумана, д. 26
+                        </span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M15.7109 15.1798L12.6109 13.3298C12.0709 13.0098 11.6309 12.2398 11.6309 11.6098V7.50977"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            с 9:00 до 20:00</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
+                                    stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9" stroke="white"
+                                    stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                data-cfemail="1078717e7b716a717e647f65625069713e6265">[email&#160;protected]</a></span>
+                        <a href="tel:+79375976062" class="nav-item phone">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.72 17.08C20.72 17.44 20.64 17.81 20.47 18.17C20.3 18.53 20.08 18.87 19.79 19.19C19.3 19.73 18.76 20.12 18.15 20.37C17.55 20.62 16.9 20.75 16.2 20.75C15.18 20.75 14.09 20.51 12.94 20.02C11.79 19.53 10.64 18.87 9.5 18.04C8.35 17.2 7.26 16.27 6.22 15.24C5.19 14.2 4.26 13.11 3.43 11.97C2.61 10.83 1.95 9.69 1.47 8.56C0.99 7.42 0.75 6.33 0.75 5.29C0.75 4.61 0.87 3.96 1.11 3.36C1.35 2.75 1.73 2.19 2.26 1.69C2.9 1.06 3.6 0.75 4.34 0.75C4.62 0.75 4.9 0.81 5.15 0.93C5.41 1.05 5.64 1.23 5.82 1.49L8.14 4.76C8.32 5.01 8.45 5.24 8.54 5.46C8.63 5.67 8.68 5.88 8.68 6.07C8.68 6.31 8.61 6.55 8.47 6.78C8.34 7.01 8.15 7.25 7.91 7.49L7.15 8.28C7.04 8.39 6.99 8.52 6.99 8.68C6.99 8.76 7 8.83 7.02 8.91C7.05 8.99 7.08 9.05 7.1 9.11C7.28 9.44 7.59 9.87 8.03 10.39C8.48 10.91 8.96 11.44 9.48 11.97C10.02 12.5 10.54 12.99 11.07 13.44C11.59 13.88 12.02 14.18 12.36 14.36C12.41 14.38 12.47 14.41 12.54 14.44C12.62 14.47 12.7 14.48 12.79 14.48C12.96 14.48 13.09 14.42 13.2 14.31L13.96 13.56C14.21 13.31 14.45 13.12 14.68 13C14.91 12.86 15.14 12.79 15.39 12.79C15.58 12.79 15.78 12.83 16 12.92C16.22 13.01 16.45 13.14 16.7 13.31L20.01 15.66C20.27 15.84 20.45 16.05 20.56 16.3C20.66 16.55 20.72 16.8 20.72 17.08Z"
+                                    stroke="#98989C" stroke-width="1.5" stroke-miterlimit="10" />
+                            </svg>
+                            <div class="phone-text-block">
+                                <span class="phone-number">8-937-597-60-62</span>
+                                <span class="phone-subtext">Звонок по России бесплатный</span>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer-socials">
+                <div class="social-media">
+                    <a href="https://vk.com" target="_blank">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="20" fill="#0077FF" />
+                            <path
+                                d="M20.9825 27C13.466 27 9.17864 21.7447 9 13H12.7651C12.8888 19.4184 15.6646 22.1371 17.8632 22.6977V13H21.4085V18.5355C23.5796 18.2973 25.8607 15.7748 26.6302 13H30.1755C29.8855 14.4391 29.3075 15.8017 28.4776 17.0025C27.6477 18.2033 26.5837 19.2166 25.3523 19.979C26.7269 20.6756 27.941 21.6615 28.9145 22.8717C29.888 24.082 30.5988 25.489 31 27H27.0974C26.7373 25.6876 26.0054 24.5128 24.9934 23.6228C23.9814 22.7328 22.7343 22.1673 21.4085 21.997V27H20.9825Z"
+                                fill="white" />
+                        </svg></a>
+                    <a href="https://t.me" target="_blank"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="20" fill="#27A6E5" />
+                            <path
+                                d="M28 12.6022L24.9946 28.2923C24.9946 28.2923 24.5741 29.3801 23.4189 28.8584L16.4846 23.3526L16.4524 23.3364C17.3891 22.4654 24.6524 15.7027 24.9698 15.3961C25.4613 14.9214 25.1562 14.6387 24.5856 14.9974L13.8568 22.053L9.71764 20.6108C9.71764 20.6108 9.06626 20.3708 9.00359 19.8491C8.9401 19.3265 9.73908 19.0439 9.73908 19.0439L26.6131 12.1889C26.6131 12.1889 28 11.5579 28 12.6022Z"
+                                fill="#FEFEFE" />
+                        </svg>
+                    </a>
+                    <a href="https://wa.me" target="_blank"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="20" fill="#48C95F" />
+                            <path
+                                d="M27.9268 12.0625C25.9512 10.0937 23.3171 9 20.5366 9C14.7561 9 10.0732 13.6667 10.0732 19.4271C10.0732 21.25 10.5854 23.0729 11.4634 24.6042L10 30L15.561 28.5417C17.0976 29.3438 18.7805 29.7812 20.5366 29.7812C26.3171 29.7812 31 25.1146 31 19.3542C30.9268 16.6563 29.9024 14.0312 27.9268 12.0625ZM25.5854 23.1458C25.3659 23.7292 24.3415 24.3125 23.8293 24.3854C23.3902 24.4583 22.8049 24.4583 22.2195 24.3125C21.8537 24.1667 21.3415 24.0208 20.7561 23.7292C18.122 22.6354 16.439 20.0104 16.2927 19.7917C16.1463 19.6458 15.1951 18.4062 15.1951 17.0937C15.1951 15.7812 15.8537 15.1979 16.0732 14.9062C16.2927 14.6146 16.5854 14.6146 16.8049 14.6146C16.9512 14.6146 17.1707 14.6146 17.3171 14.6146C17.4634 14.6146 17.6829 14.5417 17.9024 15.0521C18.122 15.5625 18.6341 16.875 18.7073 16.9479C18.7805 17.0938 18.7805 17.2396 18.7073 17.3854C18.6341 17.5312 18.561 17.6771 18.4146 17.8229C18.2683 17.9687 18.1219 18.1875 18.0488 18.2604C17.9024 18.4062 17.7561 18.5521 17.9024 18.7708C18.0488 19.0625 18.561 19.8646 19.3659 20.5937C20.3902 21.4687 21.1951 21.7604 21.4878 21.9063C21.7805 22.0521 21.9268 21.9792 22.0732 21.8333C22.2195 21.6875 22.7317 21.1042 22.878 20.8125C23.0244 20.5208 23.2439 20.5938 23.4634 20.6667C23.6829 20.7396 25 21.3958 25.2195 21.5417C25.5122 21.6875 25.6585 21.7604 25.7317 21.8333C25.8049 22.0521 25.8049 22.5625 25.5854 23.1458Z"
+                                fill="white" />
+                        </svg>
+                    </a>
+                    <a href="https://wa.me" target="_blank"><svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="20" fill="white" fill-opacity="0.2" />
+                            <path
+                                d="M25 28.5H15C12 28.5 10 27 10 23.5V16.5C10 13 12 11.5 15 11.5H25C28 11.5 30 13 30 16.5V23.5C30 27 28 28.5 25 28.5Z"
+                                stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M25 17L21.87 19.5C20.84 20.32 19.15 20.32 18.12 19.5L15 17" stroke="white"
+                                stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                </div>
+                </a>
+
+                <div class="also-socials">
+                    <a href="#"><svg width="68" height="40" viewBox="0 0 68 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect width="68" height="40" rx="4" fill="white" />
+                            <path
+                                d="M52.8032 13.3335H44.0117C44.5238 16.2355 47.3405 18.9669 50.4133 18.9669H57.4124C57.4977 18.7108 57.4977 18.2841 57.4977 18.028C57.4977 15.4674 55.3638 13.3335 52.8032 13.3335Z"
+                                fill="url(#paint0_linear_155_4568)" />
+                            <path
+                                d="M44.7793 19.4795V26.5639H49.047V22.8083H52.8026C54.8511 22.8083 56.6436 21.3573 57.241 19.4795H44.7793Z"
+                                fill="#4FAD50" />
+                            <path
+                                d="M29.7598 13.3335V26.4781H33.5154C33.5154 26.4781 34.4543 26.4781 34.9664 25.5392C37.527 20.5033 38.2952 18.9669 38.2952 18.9669H38.8073V26.4781H43.0751V13.3335H39.3195C39.3195 13.3335 38.3806 13.4189 37.8684 14.2724C35.7346 18.6255 34.5396 20.8447 34.5396 20.8447H34.0275V13.3335H29.7598Z"
+                                fill="#4FAD50" />
+                            <path
+                                d="M11.834 26.5635V13.4189H16.1017C16.1017 13.4189 17.2967 13.4189 17.9795 15.2967C19.6866 20.2473 19.8573 20.9301 19.8573 20.9301C19.8573 20.9301 20.1987 19.7352 21.7351 15.2967C22.4179 13.4189 23.6129 13.4189 23.6129 13.4189H27.8806V26.5635H23.6129V19.4791H23.1008L20.7109 26.5635H18.8331L16.4431 19.4791H15.931V26.5635H11.834Z"
+                                fill="#4FAD50" />
+                            <defs>
+                                <linearGradient id="paint0_linear_155_4568" x1="43.9965" y1="16.1906" x2="57.4675"
+                                    y2="16.1906" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#27B1E6" />
+                                    <stop offset="1" stop-color="#148ACA" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </a>
+
+                    <a href="#"><svg width="68" height="40" viewBox="0 0 68 40" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect width="68" height="40" rx="4" fill="white" />
+                            <path
+                                d="M57.2261 17.2338V23.8349H54.8828V19.2044H52.6265V23.8349H50.2832V17.2334H57.2261V17.2338Z"
+                                fill="black" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M45.471 24.0706C47.5687 24.0706 49.1264 22.7768 49.1264 20.8155C49.1264 18.9172 47.9771 17.6846 46.0563 17.6846C45.1699 17.6846 44.4384 17.9985 43.8875 18.5401C44.019 17.4207 44.9601 16.6035 45.9962 16.6035C46.2353 16.6035 48.0355 16.5997 48.0355 16.5997L49.0535 14.6401C49.0535 14.6401 46.7934 14.6919 45.7427 14.6919C43.3422 14.734 41.7207 16.9288 41.7207 19.5946C41.7207 22.7003 43.3021 24.0706 45.471 24.0706ZM45.4837 19.4203C46.2626 19.4203 46.8025 19.9351 46.8025 20.8153C46.8025 21.6075 46.3227 22.2602 45.4837 22.262C44.6811 22.262 44.1412 21.6572 44.1412 20.8288C44.1412 19.9483 44.6811 19.4203 45.4837 19.4203Z"
+                                fill="black" />
+                            <path
+                                d="M39.8139 21.625C39.8139 21.625 39.2605 21.9459 38.434 22.0066C37.4838 22.035 36.6372 21.4313 36.6372 20.3587C36.6372 19.3125 37.3843 18.7128 38.4101 18.7128C39.0391 18.7128 39.8712 19.1514 39.8712 19.1514C39.8712 19.1514 40.48 18.0275 40.7954 17.4654C40.2179 17.0251 39.4486 16.7837 38.5539 16.7837C36.2958 16.7837 34.5469 18.2646 34.5469 20.3454C34.5469 22.4528 36.1907 23.8993 38.5539 23.8557C39.2145 23.8309 40.1257 23.5976 40.6811 23.2387L39.8139 21.625Z"
+                                fill="black" />
+                            <path d="M11 11.877L14.2506 17.7213V21.2862L11.0038 27.1191L11 11.877Z" fill="#5B57A2" />
+                            <path d="M23.4785 15.5946L26.5244 13.7168L32.758 13.7109L23.4785 19.4291V15.5946Z"
+                                fill="#D90751" />
+                            <path d="M23.4616 11.8426L23.4789 19.5803L20.2207 17.5666V6L23.4616 11.8426Z"
+                                fill="#FAB718" />
+                            <path d="M32.7583 13.711L26.5245 13.7168L23.4616 11.8426L20.2207 6L32.7583 13.711Z"
+                                fill="#ED6F26" />
+                            <path d="M23.4789 27.1515V23.3974L20.2207 21.4219L20.2225 32.9999L23.4789 27.1515Z"
+                                fill="#63B22F" />
+                            <path d="M26.5191 25.2908L14.2503 17.7213L11 11.877L32.7471 25.2831L26.5191 25.2908Z"
+                                fill="#1487C9" />
+                            <path d="M20.2227 33L23.4786 27.1516L26.5169 25.2909L32.7448 25.2832L20.2227 33Z"
+                                fill="#017F36" />
+                            <path d="M11.0039 27.1193L20.2494 21.4223L17.1411 19.5039L14.2507 21.2864L11.0039 27.1193Z"
+                                fill="#984995" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-copy">
+                © 2014-2025 Компания «Хан-Тур»
+                <a href="#">Политики конфиденциальности</a>
+            </div>
+        </div>
+        </div>
+        </div>
+    </footer>
 
     <script src="../js/excursion.js"></script>
     <script src="../js/app.js"></script>
