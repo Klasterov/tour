@@ -413,6 +413,7 @@ const content = document.getElementById('aboutContent');
   });
 
   document.addEventListener("DOMContentLoaded", () => {
+  return;
   const cardsContainer = document.querySelector(".cards");
   const rightArrow = document.querySelector(".arrow.right");
 
@@ -457,34 +458,57 @@ const content = document.getElementById('aboutContent');
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const slider = document.getElementById("gallerySlider");
-  const prevBtn = document.getElementById("galleryPrev");
-  const nextBtn = document.getElementById("galleryNext");
+  const gallery = document.querySelector("section.gallery");
+  if (!gallery) return;
 
-  const cards = slider.querySelectorAll(".card");
-  const gap = 20;
+  const slider = gallery.querySelector("#gallerySlider");
+  const wrapper = gallery.querySelector(".cards-wrapper");
+  const prevBtn = gallery.querySelector("#galleryPrev");
+  const nextBtn = gallery.querySelector("#galleryNext");
+  if (!slider || !wrapper || !prevBtn || !nextBtn) return;
+
+  const cards = Array.from(slider.querySelectorAll(".card"));
+  if (!cards.length) return;
 
   let index = 0;
-  const visibleCards = 4;
+
+  function getStep() {
+    const style = window.getComputedStyle(slider);
+    const gap = parseFloat(style.columnGap || style.gap || "0") || 0;
+    return cards[0].offsetWidth + gap;
+  }
+
+  function getMaxIndex() {
+    const step = getStep();
+    const visible = Math.max(1, Math.floor((wrapper.clientWidth + 1) / step));
+    return Math.max(0, cards.length - visible);
+  }
 
   function updateSlider() {
-    const cardWidth = cards[0].offsetWidth + gap;
-    slider.style.transform = `translateX(-${index * cardWidth}px)`;
+    const maxIndex = getMaxIndex();
+    if (index < 0) index = 0;
+    if (index > maxIndex) index = maxIndex;
+
+    const step = getStep();
+    slider.style.transform = `translateX(-${index * step}px)`;
   }
 
   nextBtn.addEventListener("click", () => {
-    if (index < cards.length - visibleCards) {
-      index++;
-      updateSlider();
-    }
+    const maxIndex = getMaxIndex();
+    if (maxIndex === 0) return;
+    index = index >= maxIndex ? 0 : index + 1;
+    updateSlider();
   });
 
   prevBtn.addEventListener("click", () => {
-    if (index > 0) {
-      index--;
-      updateSlider();
-    }
+    const maxIndex = getMaxIndex();
+    if (maxIndex === 0) return;
+    index = index <= 0 ? maxIndex : index - 1;
+    updateSlider();
   });
+
+  window.addEventListener("resize", updateSlider);
+  updateSlider();
 
 });
 

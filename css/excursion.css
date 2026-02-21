@@ -73,8 +73,30 @@ body {
     color: #fff;
   }
 
+  @media (min-width: 901px) {
+    .filter-section {
+      padding: 4px 0 6px;
+    }
+
+    .tags-wrapper {
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      overflow: visible;
+      margin: 0 auto;
+    }
+
+    .tag {
+      padding: 10px 16px;
+      font-size: 13px;
+      line-height: 1.2;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+  }
+
   .tag.hidden {
-    display: inline-flex;
+    display: none;
   }
 
   .tag.visible {
@@ -602,10 +624,13 @@ body {
 
 #sec-route {
   display: block;
+  padding-top: 0;
 }
 #sec-route .exc-section-title {
   font-size: 32px;
   font-weight: 700;
+  padding-top: 0;
+  margin-top: 0;
 }
 #sec-route .route-grid {
   margin-top: 0;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -322,7 +322,9 @@
 
             <div class="excursion-card" data-link="/excursion/1">
                 <div class="card-image">
-                    <img src="img/card/card1.png" alt="">
+                    <img src="img/card/card1.png"
+                                srcset="img/card/card1.png 1x, img/card/card1@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
                     <span class="badge">Автобусная</span>
                     <span class="discount">-100%</span>
                 </div>
@@ -394,7 +396,9 @@
 
             <div class="excursion-card" data-link="/excursion/2">
                 <div class="card-image">
-                    <img src="img/card/card2.png" alt="">
+                    <img src="img/card/card2.png"
+                                srcset="img/card/card2.png 1x, img/card/card2@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
                     <span class="badge">Автобусная</span>
                     <span class="discount">-100%</span>
                 </div>
@@ -465,7 +469,9 @@
             </div>
             <div class="excursion-card" data-link="/excursion/3">
                 <div class="card-image">
-                    <img src="img/card/card3.png" alt="">
+                    <img src="img/card/card3.png"
+                                srcset="img/card/card3.png 1x, img/card/card3@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
                     <span class="badge">Автобусная</span>
                     <span class="discount">-100%</span>
                 </div>
@@ -536,7 +542,9 @@
             </div>
             <div class="excursion-card" data-link="/excursion/4">
                 <div class="card-image">
-                    <img src="img/card/card4.png" alt="">
+                    <img src="img/card/card4.png"
+                                srcset="img/card/card4.png 1x, img/card/card4@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
                     <span class="badge">Автобусная</span>
                     <span class="discount">-100%</span>
                 </div>
@@ -1283,8 +1291,9 @@
     </section>
 
     <section class="about">
+        
+                <div class="container">
         <div class="about-card">
-
             <div class="about-header">
                 <h2>Коротко об экскурсиях</h2>
 
@@ -1402,9 +1411,14 @@
 
             <button class="about-toggle" id="aboutToggle">
                 Читать полностью
-                <span class="arrow">▾</span>
+                <span class="arrow">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.05025 8.55025L10 13.5L14.9497 8.55025" stroke="#196DFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
             </button>
-
+</div>
+</div>
         </div>
     </section>
 
@@ -1419,57 +1433,107 @@
             </div>
 
             <div class="slider">
-                <button class="arrow left" id="galleryPrev">&#10094;</button>
+                <button class="gallery-arrow left" id="galleryPrev" aria-label="Предыдущие карточки">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#galleryArrowPrevShadow)">
+                            <rect x="56" y="55" width="40" height="40" rx="20" transform="rotate(180 56 55)" fill="white" shape-rendering="crispEdges"/>
+                            <path d="M37.4497 30.0503L32.5 35L37.4497 39.9497" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                            <filter id="galleryArrowPrevShadow" x="0" y="0" width="72" height="72" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="8"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_155_4331"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_155_4331" result="shape"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </button>
 
                 <div class="cards-wrapper">
                     <div class="cards" id="gallerySlider">
 
                         <div class="card" onclick="location.href='kazan-kremlin.html'">
-                            <img src="img/attractions/1.png"
-                                srcset="img/attractions/1.png 1x, img/attractions/1@2x.png 2x" alt="Казань"
-                                loading="lazy" decoding="async">
+                            <div class="card-image">
+                                <img src="img/attractions/1.png"
+                                    srcset="img/attractions/1.png 1x, img/attractions/1@2x.png 2x" alt="Казань"
+                                    loading="lazy" decoding="async">
+                            </div>
                             <div class="card-title">Казанский Кремль</div>
                         </div>
 
                         <div class="card" onclick="location.href='freedom-square.html'">
-                            <img src="img/attractions/2.png"
-                                srcset="img/attractions/2.png 1x, img/attractions/2@2x.png 2x" alt="Казань"
-                                loading="lazy" decoding="async">
+                            <div class="card-image">
+                                <img src="img/attractions/2.png"
+                                    srcset="img/attractions/2.png 1x, img/attractions/2@2x.png 2x" alt="Казань"
+                                    loading="lazy" decoding="async">
+                            </div>
                             <div class="card-title">Площадь Свободы</div>
                         </div>
 
                         <div class="card" onclick="location.href='embankment.html'">
-                            <img src="img/attractions/3.png"
-                                srcset="img/attractions/3.png 1x, img/attractions/3@2x.png 2x" alt="Казань"
-                                loading="lazy" decoding="async">
+                            <div class="card-image">
+                                <img src="img/attractions/3.png"
+                                    srcset="img/attractions/3.png 1x, img/attractions/3@2x.png 2x" alt="Казань"
+                                    loading="lazy" decoding="async">
+                            </div>
                             <div class="card-title">Кремлёвская набережная Казани</div>
                         </div>
 
                         <div class="card" onclick="location.href='farmers-palace.html'">
-                            <img src="img/attractions/4.png"
-                                srcset="img/attractions/4.png 1x, img/attractions/4@2x.png 2x" alt="Казань"
-                                loading="lazy" decoding="async">
+                            <div class="card-image">
+                                <img src="img/attractions/4.png"
+                                    srcset="img/attractions/4.png 1x, img/attractions/4@2x.png 2x" alt="Казань"
+                                    loading="lazy" decoding="async">
+                            </div>
                             <div class="card-title">Дворец Земледельцев</div>
                         </div>
 
                         <div class="card" onclick="location.href='wedding-palace.html'">
-                            <img src="img/attractions/5.png"
-                                srcset="img/attractions/5.png 1x, img/attractions/5@2x.png 2x" alt="Казань"
-                                loading="lazy" decoding="async">
+                            <div class="card-image">
+                                <img src="img/attractions/5.png"
+                                    srcset="img/attractions/5.png 1x, img/attractions/5@2x.png 2x" alt="Казань"
+                                    loading="lazy" decoding="async">
+                            </div>
                             <div class="card-title">Дворец бракосочетаний «ЧАША»</div>
                         </div>
 
                         <div class="card" onclick="location.href='kazan-arena.html'">
-                            <img src="img/attractions/6.png"
-                                srcset="img/attractions/6.png 1x, img/attractions/6@2x.png 2x" alt="Казань"
-                                loading="lazy" decoding="async">
+                            <div class="card-image">
+                                <img src="img/attractions/6.png"
+                                    srcset="img/attractions/6.png 1x, img/attractions/6@2x.png 2x" alt="Казань"
+                                    loading="lazy" decoding="async">
+                            </div>
                             <div class="card-title">Стадион «Казань-Арена»</div>
                         </div>
 
                     </div>
                 </div>
 
-                <button class="arrow right" id="galleryNext">&#10095;</button>
+                <button class="gallery-arrow right" id="galleryNext" aria-label="Следующие карточки">
+                    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#galleryArrowNextShadow)">
+                            <rect x="16" y="15" width="40" height="40" rx="20" fill="white" shape-rendering="crispEdges"/>
+                            <path d="M34.5503 39.9497L39.5 35L34.5503 30.0503" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                            <filter id="galleryArrowNextShadow" x="0" y="0" width="72" height="72" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="1"/>
+                                <feGaussianBlur stdDeviation="8"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_155_4330"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_155_4330" result="shape"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                </button>
             </div>
 
             <div class="show-all show-all--mobile" onclick="location.href='all-attractions.html'">

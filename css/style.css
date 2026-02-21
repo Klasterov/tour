@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap');
 
 body {
     margin: 0;
@@ -485,6 +485,10 @@ hr {
     padding-bottom: 12px;
 }
 
+.nav-menu:last-child{
+    justify-content: flex;
+}
+
 .nav-menu a {
     text-decoration: none;
     color: black;
@@ -502,7 +506,7 @@ hr {
 }
 
 .schedule-btn {
-    margin-left: 104px;
+    margin-left: 100px;
     padding: 8px 16px;
     background: gold;
     border-radius: 20px;
@@ -522,6 +526,7 @@ hr {
 .socials {
     display: flex;
     gap: 10px;
+    margin-left: auto;
 }
 
 .social {
@@ -961,18 +966,22 @@ hr {
 }
 
 .calendar-header {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 16px;
-    margin-top: 24px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    width: 100%;
-    padding-bottom: 16px;
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 24px 32px 16px;
+    border-bottom: none;
+    box-shadow: none;
+    background: white;
+    border-radius: 16px 16px 0 0;
 }
 
 .month-year {
     cursor: pointer;
     font-weight: 600;
+    text-align: center;
 }
 
 .arrow {
@@ -980,6 +989,23 @@ hr {
     background: none;
     cursor: pointer;
     font-size: 18px;
+}
+
+.calendar-header .arrow,
+.schedule-header .arrow {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: #2b2b2b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
 }
 
 .calendar-days,
@@ -1005,6 +1031,12 @@ hr {
     border-radius: 8px;
     cursor: pointer;
     transition: .2s;
+    color: #2B2B2B;
+    opacity: 1;
+}
+
+.calendar-dates span:empty {
+    cursor: default;
 }
 
 .calendar-dates span:hover {
@@ -1014,6 +1046,10 @@ hr {
 .calendar-dates .active {
     background: #16A34A;
     color: white;
+}
+
+.calendar-dates .muted {
+    color: #B9BDC7;
 }
 
 .month-picker {
@@ -1052,6 +1088,7 @@ hr {
     width: 80%;
     padding: 12px;
     background: #FFD600;
+    color: #1F1F1F;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -1082,16 +1119,52 @@ hr {
 .schedule-list {
     flex: 1;
     overflow-y: auto;
-    padding-right: 6px;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: #9E9EA4 transparent;
+    padding-right: 0;
+}
+
+.schedule-card::-webkit-scrollbar,
+.schedule-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+.schedule-card::-webkit-scrollbar-track,
+.schedule-list::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 999px;
+}
+
+.schedule-card::-webkit-scrollbar-thumb,
+.schedule-list::-webkit-scrollbar-thumb {
+    background: #9E9EA4;
+    border-radius: 999px;
+    min-height: 4px;
+}
+
+.schedule-card::-webkit-scrollbar-button,
+.schedule-list::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .schedule-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    align-items: center;
+    margin: 0;
     font-weight: 600;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    padding: 24px;
+    box-shadow: none;
+    padding: 24px 32px 16px 32px;
+    background: white;
+    border-radius: 16px 16px 0 0;
+}
+
+#selectedDateText {
+    flex: 1;
+    text-align: center;
 }
 
 .schedule-item {
@@ -1117,7 +1190,7 @@ hr {
     line-height: 20px;
 }
 
-.price {
+.schedule-item .price {
     margin-left: auto;
     color: #17AA00;
     font-weight: 700;
@@ -1150,7 +1223,7 @@ hr {
 
 .reviews-header h2 {
     font-size: 32px;
-    font-weight: 400;
+    font-weight: 700;
     color: #000;
     margin: 0;
 }
@@ -1253,7 +1326,7 @@ hr {
     color: #000;
     cursor: pointer;
     transition: all 0.25s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     margin-top: 45%;
 }
 
@@ -1262,7 +1335,7 @@ hr {
     background: #ff5252;
     color: white;
     border-color: #ff5252;
-    box-shadow: 0 6px 16px rgba(255, 82, 82, 0.4), 0 4px 10px rgba(255, 82, 82, 0.3);
+    box-shadow: none;
 }
 
 .leave-btn:active {
@@ -1296,7 +1369,7 @@ hr {
     flex-direction: column;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
     min-height: 320px;
     flex: 0 0 calc((100% - 32px) / 3);
     min-width: 0;
@@ -1304,7 +1377,7 @@ hr {
 
 .review-card:hover {
     border-color: #ddd;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: none;
 }
 
 .card-header {
@@ -1401,7 +1474,7 @@ hr {
 .progress-bar {
     position: absolute;
     height: 6px;
-    background: linear-gradient(90deg, #52c41a 0%, #3fa815 100%);
+    background: #17AA00;
     border-radius: 3px;
     top: 0;
     left: 0;
@@ -1411,9 +1484,6 @@ hr {
     width: 30%;
 }
 
-.progress-bar:hover {
-    box-shadow: 0 4px 12px rgba(82, 196, 26, 0.45), 0 6px 16px rgba(82, 196, 26, 0.35);
-}
 
 .progress-bar:active {
     cursor: grabbing;
@@ -1487,15 +1557,15 @@ hr {
 }
 
 .rem {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    gap: 32px;
+    gap: 24px;
 }
 
 .about-info {
     flex: 1;
-    background: #21A038;
+    background: #17AA00;
     border-radius: 22px;
     padding: 28px;
     color: white;
@@ -1681,13 +1751,19 @@ hr {
 }
 
 .about-toggle {
-    margin-top: 12px;
+    margin: 12px auto 0;
     background: none;
     border: none;
+    font-family: 'Formular', 'Mulish', sans-serif;
     font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
     color: #2979ff;
     cursor: pointer;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     width: 100%;
     text-decoration: none;
@@ -1695,6 +1771,26 @@ hr {
 
 
 .about-toggle .arrow {
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    font-size: 16px;
+    line-height: 1;
+    color: #2979ff;
+    display: inline-block;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.about-toggle .arrow:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.about-toggle:hover {
+    opacity: 0.9;
     transition: transform 0.3s ease;
 }
 
@@ -1726,11 +1822,12 @@ hr {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 12px;
 }
 
 .gallery-header h2 {
     font-size: 32px;
+    line-height: 1.1;
     font-weight: 700;
 }
 
@@ -1749,6 +1846,8 @@ hr {
     position: relative;
     display: flex;
     align-items: center;
+    gap: 0;
+    padding: 10px;
 }
 
 .slider-section {
@@ -1758,19 +1857,21 @@ hr {
 .cards-wrapper {
     overflow: hidden;
     width: 100%;
+    padding: 0;
 }
 
 .cards {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     transition: transform 0.4s ease;
 }
 
 .card {
     position: relative;
-    min-width: 186px;
-    height: 160px;
-    border-radius: 14px;
+    flex: 0 0 186.6666717529297px;
+    width: 186.6666717529297px;
+    height: 200px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -1797,13 +1898,13 @@ hr {
     color: white;
     font-weight: 600;
     z-index: 2;
-    font-size: 16px;
-    line-height: 24px;
-    width: 146px;
+    font-size: 14px;
+    line-height: 1.3;
+    width: calc(100% - 40px);
 }
 
 .card:hover {
-    transform: scale(1.08);
+    transform: scale(1.04);
 }
 
 .arrow {
@@ -1818,12 +1919,40 @@ hr {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.arrow.left {
-    left: -18px;
+.gallery-arrow {
+    width: 72px;
+    height: 72px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
 }
 
-.arrow.right {
-    right: -18px;
+.gallery-arrow.left {
+    left: -36px;
+}
+
+.gallery-arrow.right {
+    right: -36px;
+}
+
+.gallery-arrow svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+section.gallery .gallery-arrow:disabled {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
 }
 
 .faq-section {
@@ -1864,6 +1993,10 @@ hr {
     cursor: pointer;
     font-weight: 500;
     font-size: 16px;
+}
+
+.faq-question span{
+    max-width: 560px;
 }
 
 .faq-toggle {
@@ -1972,26 +2105,38 @@ hr {
     color: white;
 }
 
+.social-btn[data-social="Telegram"].active {
+    background: #f1f1f1;
+    color: #111;
+}
+
 .policy {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
     font-size: 12px;
-    color: #666;
-    display: block;
+    line-height: 16px;
+    color: #76767A;
     margin-bottom: 15px;
-    display: inline-flex;
+    width: 100%;
 }
 
 .policy p {
-    width: 250px;
+    margin: 0;
+    max-width: 300px;
 }
 
 .policy a {
-    color: #16a34a;
+    color: #196DFF;
     text-decoration: none;
 }
 
-input[type="checkbox"] {
+.policy .policy-check {
     accent-color: #17AA00;
-    width: 20px;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    flex-shrink: 0;
 }
 
 .submit-btn {
@@ -2046,7 +2191,7 @@ input[type="checkbox"] {
 .topic-item {
     padding: 14px 20px;
     border-radius: 30px;
-    border: 2px solid #17AA00;
+    border: 1px solid #17AA00;
     color: #17AA00;
     font-size: 16px;
     cursor: pointer;
@@ -2707,7 +2852,7 @@ input[type="checkbox"] {
     }
 
     .calendar-dates .active {
-        background: #16A34A;
+        background: #17AA00;
         color: white;
         border-radius: 8px;
     }
@@ -3061,7 +3206,7 @@ input[type="checkbox"] {
     .about-info {
         border-radius: 20px;
         padding: 20px 16px;
-        background: #21A038;
+        background: #17AA00;
     }
 
     .features {
@@ -3481,10 +3626,10 @@ input[type="checkbox"] {
         white-space: nowrap;
     }
 
-    section.gallery .arrow.left,
-    section.gallery .arrow.right {
-        width: 32px;
-        height: 32px;
+    section.gallery .gallery-arrow.left,
+    section.gallery .gallery-arrow.right {
+        width: 40px;
+        height: 40px;
         font-size: 16px;
         flex-shrink: 0;
         display: flex;
@@ -3493,16 +3638,17 @@ input[type="checkbox"] {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     }
 
-    section.gallery .arrow.left {
+    section.gallery .gallery-arrow.left {
         left: -10px;
     }
 
-    section.gallery .arrow.right {
+    section.gallery .gallery-arrow.right {
         right: -10px;
     }
 
     section.gallery .card {
         min-width: 150px;
+        width: 150px;
         height: 130px;
         border-radius: 12px;
     }
@@ -3566,12 +3712,23 @@ input[type="checkbox"] {
     }
 
     .about-toggle {
-        font-size: 15px;
-        padding: 10px 0;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-    }
+    margin: 12px auto 0;
+    background: none;
+    border: none;
+    font-family: 'Formular', 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #2979ff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    text-decoration: none;
+}
 
     .topics-section {
         padding: 24px 0 32px;
@@ -3671,6 +3828,7 @@ input[type="checkbox"] {
 
     section.gallery .card {
         min-width: 140px;
+        width: 140px;
         height: 120px;
     }
 
@@ -3727,3 +3885,5 @@ input[type="checkbox"] {
         color: white;
     }
 }
+
+

@@ -61,21 +61,7 @@
             <a href="https://yandex.ru/maps/" target="_blank">Отзывы</a>
             <a href="contacts.html">Контакты</a>
         </nav>
-        <a href="schedule.html" class="mob-schedule-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 2V5" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M16 2V5" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M3.5 9.09H20.5" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path
-                    d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
-                    stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-            Расписание экскурсий
-        </a>
+        
         <div class="mob-menu-socials">
             <a href="https://vk.com" target="_blank">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -206,33 +192,7 @@
                     <a href="https://yandex.ru/maps/" target="_blank">Отзывы</a>
                     <a href="contacts.html">Контакты</a>
 
-                    <a href="schedule.html" class="schedule-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 2V5" stroke="black" stroke-width="1.5" stroke-miterlimit="10"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M16 2V5" stroke="black" stroke-width="1.5" stroke-miterlimit="10"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M3.5 9.09H20.5" stroke="black" stroke-width="1.5" stroke-miterlimit="10"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
-                                stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M15.6937 13.7H15.7027" stroke="black" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M15.6937 16.7H15.7027" stroke="black" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M11.9945 13.7H12.0035" stroke="black" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M11.9945 16.7H12.0035" stroke="black" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M8.29529 13.7H8.30427" stroke="black" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M8.29529 16.7H8.30427" stroke="black" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                        Расписание экскурсий</a>
+                    
 
                     <div class="socials">
                         <a href="https://vk.com" target="_blank" class="social">
@@ -313,10 +273,8 @@
   <div class="container">
   <h1>Экскурсия по вечернему городу «Огни ночной Казани»</h1>
 
-  <!-- RATING ROW -->
   <div class="rating-row">
     <div class="rating-left">
-      <!-- 4 full stars + 1 half -->
       <div class="stars">
         <svg class="star" viewBox="0 0 20 20"><defs><linearGradient id="f"><stop offset="100%" stop-color="#f5a421"/></linearGradient></defs><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#f5a421"/></svg>
         <svg class="star" viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#f5a421"/></svg>
@@ -339,11 +297,7 @@
       </svg>
     </a>
   </div>
-
-  <!-- LAYOUT -->
   <div class="layout">
-
-    <!-- GALLERY -->
     <div class="gallery">
       <div class="main-wrap">
         <img id="mainImg"
@@ -366,8 +320,6 @@
 
       <div class="thumbs" id="thumbsRow"></div>
     </div>
-
-    <!-- SIDEBAR -->
     <div class="sidebar">
       <div class="s-title">Детали экскурсии</div>
 
@@ -988,7 +940,9 @@
       <div class="similar-track" id="simTrack">
         <div class="excursion-card" data-link="/excursion/1">
           <div class="card-image">
-            <img src="../img/card/card1.png" alt="Обзорная экскурсия">
+            <img src="../img/card/card1.png"
+                                srcset="../img/card/card1.png 1x, ../img/card/card1@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
             <span class="badge">Автобусная</span>
             <span class="discount">-100%</span>
           </div>
@@ -1007,7 +961,9 @@
 
         <div class="excursion-card" data-link="/excursion/2">
           <div class="card-image">
-            <img src="../img/card/card2.png" alt="Ночная Казань">
+            <img src="../img/card/card2.png"
+                                srcset="../img/card/card2.png 1x, ../img/card/card2@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
             <span class="badge">Автобусная</span>
             <span class="discount">-100%</span>
           </div>
@@ -1026,7 +982,9 @@
 
         <div class="excursion-card" data-link="/excursion/3">
           <div class="card-image">
-            <img src="../img/card/card3.png" alt="Свияжск и Храм всех религий">
+            <img src="../img/card/card3.png"
+                                srcset="../img/card/card3.png 1x, ../img/card/card3@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
             <span class="badge">Автобусная</span>
             <span class="discount">-100%</span>
           </div>
@@ -1045,7 +1003,9 @@
 
         <div class="excursion-card" data-link="/excursion/4">
           <div class="card-image">
-            <img src="../img/card/card4.png" alt="Свияжск и Раифа">
+            <img src="../img/card/card4.png"
+                                srcset="../img/card/card4.png 1x, ../img/card/card4@2x.png 2x" alt="Казань"
+                                loading="lazy" decoding="async">
             <span class="badge">Автобусная</span>
             <span class="discount">-100%</span>
           </div>
